@@ -1,0 +1,1781 @@
+//
+// Layer definitions
+//
+LAYER Substrate   drawing  40  0   (255,255,255,255) t t I1         solid      ;
+LAYER Activ       drawing  1   0   (0,255,0,255)     t t stipple40  dashed     ;
+LAYER GatPoly     drawing  5   0   (191,64,38,255)   t t dagger     lineStyle0 ;
+LAYER PolyRes     drawing  128 0   (191,64,38,255)   t t dagger     lineStyle0 ;
+LAYER NWell       drawing  31  0   (38,140,107,255)  t t hZigZag    lineStyle0 ;
+LAYER nBuLay      drawing  32  0   (140,140,166,255) t t stipple113 solid      ;
+LAYER pSD         drawing  14  0   (204,184,153,255) t t stipple39  lineStyle0 ;
+LAYER nSD         drawing  7   0   (0,204,102,255)   t t vLine      solid      ;
+LAYER SalBlock    drawing  28  0   (153,0,230,255)   t t stipple12  dashed     ;
+LAYER ThickGateOx drawing  44  0   (255,255,204,255) t t stipple13  solid      ;
+LAYER Cont        drawing  6   0   (0,255,255,255)   t t ct         lineStyle0 ;
+LAYER Metal1      drawing  8   0   (57,191,255,255)  t t m1         lineStyle0 ;
+LAYER Via1        drawing  19  0   (204,204,255,255) t t v1         mLine      ;
+LAYER Metal2      drawing  10  0   (204,204,217,255) t t m2         solid      ;
+LAYER Via2        drawing  29  0   (255,55,54,255)   t t v2         mLine      ;
+LAYER Metal3      drawing  30  0   (216,0,0,255)     t t m3         solid      ;
+LAYER MIM         drawing  36  0   (38,140,107,255)  t t stipple105 solid      ;
+LAYER Vmim        drawing  129 0   (255,230,191,255) t t tv1        mLine      ;
+LAYER Via3        drawing  49  0   (155,169,64,255)  t t v3         mLine      ;
+LAYER Metal4      drawing  50  0   (147,232,55,255)  t t m4         solid      ;
+LAYER Via4        drawing  66  0   (222,172,94,255)  t t v4         mLine      ;
+LAYER Metal5      drawing  67  0   (220,209,70,255)  t t m5         solid      ;
+LAYER TopVia1     drawing  125 0   (255,230,191,255) t t tv1        mLine      ;
+LAYER TopMetal1   drawing  126 0   (255,230,191,255) t t tm1        solid      ;
+LAYER TopVia2     drawing  133 0   (255,128,0,255)   t t tv2        mLine      ;
+LAYER TopMetal2   drawing  134 0   (255,128,0,255)   t t tm2        solid      ;
+LAYER Passiv      drawing  9   0   (230,31,13,255)   t t x          solid      ;
+LAYER NoMetFiller drawing  160 0   (217,230,255)     t t I1         tdots      ;
+LAYER ThinFilmRes drawing  146 0   (230,31,13,255)   t t blank      solid      ;
+LAYER IND         drawing  27  0   (255,255,0,255)   t t I1         solid      ;
+LAYER EdgeSeal    drawing  39  0   (94,0,230,255)    t t I1         solid      ;
+LAYER dfpad       drawing  41  0   (94,0,230,255)    t t I1         mLine      ;
+LAYER TEXT        drawing  63  0   (255,255,255,255) t t I1         solid      ;
+LAYER Recog       drawing  99  0   (189,204,204,255) t t blank      solid      ;
+LAYER DigiBnd     drawing  16  0   (255,0,0,255)     t t dot1       tdots      ;
+LAYER RES         drawing  24  0   (191,64,38,255)   t t stipple16  tdots      ;
+LAYER SRAM        drawing  25  0   (255,255,0,255)   f t stipple40  solid      ;
+LAYER TRANS       drawing  26  0   (0,255,255,255)   f t blank      solid      ;
+LAYER DigiSub     drawing  60  0   (255,255,0,255)   t t dot1       tdots      ;
+LAYER HeatTrans   drawing  51  0   (140,140,166,255) t t I1         solid      ;
+LAYER HeatRes     drawing  52  0   (140,140,166,255) t t I1         dashed     ;
+LAYER NoRCX       drawing  148 0   (255,0,0,255)     t t x          solid      ;
+LAYER BiWind      drawing  3   0   (38,140,107,255)  f t dagger     solid      ;
+LAYER BasPoly     drawing  13  0   (191,64,38,255)   f t Polystp    lineStyle0 ;
+LAYER EmWind      drawing  33  0   (0,204,102,255)   f t x          solid      ;
+LAYER DeepCo      drawing  35  0   (255,128,0,255)   f t x          solid      ;
+LAYER EmPoly      drawing  55  0   (255,230,191,255) f t x          solid      ;
+LAYER Varicap     drawing  70  0   (0,204,102,255)   t t x          solid      ;
+LAYER EmWind3     drawing  90  0   (0,204,102,255)   t t x          solid      ;
+LAYER EmWiHV3     drawing  91  0   (0,204,102,255)   t t x          solid      ;
+LAYER ColOpen     drawing  101 0   (216,0,0,255)     f t stipple103 solid      ;
+LAYER ColWind     drawing  139 0   (255,0,255,255)   f t stipple37  solid      ;
+LAYER EmWiHV      drawing  156 0   (0,204,102,255)   f t x          solid      ;
+LAYER DeepVia     drawing  152 0   (255,128,0,255)   t t I1         solid      ;
+LAYER LBE         drawing  157 0   (255,0,255,255)   t t stipple50  solid      ;
+LAYER BackMetal1  drawing  20  0   (255,230,191,255) t t tm1        solid      ;
+LAYER BackPassiv  drawing  23  0   (255,230,191,255) t t tm1        solid      ;
+LAYER IntBondVia  drawing  72  0   (38,140,107,255)  t t m5         mLine      ;
+LAYER IntBondMet  drawing  73  0   (38,140,107,255)  t t m5         solid      ;
+LAYER DevBondVia  drawing  74  0   (94,0,230,255)    t t tm1        mLine      ;
+LAYER DevBondMet  drawing  75  0   (94,0,230,255)    t t tm1        solid      ;
+LAYER DevTrench   drawing  76  0   (255,255,255,255) t t blank      solid      ;
+LAYER Redist      drawing  77  0   (255,0,255,255)   t t blank      solid      ;
+LAYER FBE         drawing  54  0   (255,255,0,255)   f t I1         solid      ;
+LAYER AntVia1     drawing  83  0   (153,0,230,255)   t t tnal       mLine      ;
+LAYER AntMetal2   drawing  84  0   (191,64,38,255)   t t stipple14  solid      ;
+LAYER AntMetal1   drawing  132 0   (153,0,230,255)   t t tnal       solid      ;
+LAYER FLM         drawing  142 0   (51,51,153,255)   f t blank      solid      ;
+LAYER SNSRing     drawing  135 0   (255,128,0,255)   f t dagger     solid      ;
+LAYER Sensor      drawing  136 0   (189,204,204,255) f t dagger     solid      ;
+LAYER SNSArms     drawing  137 0   (255,128,0,255)   f t dagger     tdots2     ;   
+LAYER SNSCMOSVia  drawing  138 0   (255,128,0,255)   f t dagger     mLine      ;
+LAYER SNSBotVia   drawing  149 0   (204,184,153,255) t t stipple63  mLine      ;
+LAYER SNSTopVia   drawing  151 0   (0,255,0,255)     t t stipple63  mLine      ;
+LAYER NLDB        drawing  15  0   (255,255,0,255)   f t blank      solid      ;
+LAYER PLDB        drawing  45  0   (255,255,0,255)   f t blank      solid      ;
+LAYER RedBuLay    drawing  92  0   (217,204,0,255)   f t stipple113 solid      ;
+LAYER NLDD        drawing  112 0   (255,255,0,255)   f t stipple45  solid      ;
+LAYER PLDD        drawing  113 0   (255,255,0,255)   f t stipple46  solid      ;
+LAYER NExt        drawing  114 0   (255,255,0,255)   f t stipple47  solid      ;
+LAYER PExt        drawing  115 0   (255,255,0,255)   f t stipple48  solid      ;
+LAYER INLDPWL     drawing  127 0   (255,255,0,255)   f t stipple45  solid      ;
+LAYER nBuLayCut   drawing  131 0   (255,255,0,255)   f t triangle   solid      ;
+LAYER GraphBot    drawing  78  0   (153,0,230,255)   f t stipple14  solid      ;
+LAYER GraphTop    drawing  79  0   (255,0,255,255)   f t metal2S    solid      ;
+LAYER GraphCont   drawing  85  0   (38,140,107,255)  f t m5         mLine      ;
+LAYER SiWG        drawing  86  0   (216,0,0,255)     f t stipple12  solid      ;
+LAYER SiGrating   drawing  87  0   (140,140,166,255) f t vZigZag    solid      ;
+LAYER SiNGrating  drawing  87  0   (0,133,57,255)    f t hZigZag    solid      ;
+LAYER GraphPas    drawing  89  0   (255,128,0,255)   f t I1         solid      ;
+LAYER GraphPad    drawing  97  0   (230,31,13,255)   f t vZigZag    tdots      ;
+LAYER GraphMetal1 drawing  109 0   (0,179,0,255)     f t m5         solid      ;
+LAYER GraphMet1L  drawing  110 0   (52,183,171,255)  f t m4         solid      ;
+LAYER GraphGate   drawing  118 0   (255,255,0,255)   f t stipple40  solid      ;
+LAYER SiNWG       drawing  119 0   (255,255,204,255) f t stipple12  solid      ;
+LAYER PWell       drawing  46  0   (255,255,0,255)   t t dots10     solid      ;
+LAYER IC          drawing  48  0   (255,255,0,255)   f t I1         solid      ;
+LAYER NoDRC       drawing  62  0   (255,0,0,255)     t t x          solid      ;
+LAYER RadHard     drawing  68  0   (255,118,251,255) f t blank      solid      ;
+LAYER MemCap      drawing  69  0   (255,0,255,255)   f t m6         solid      ;
+LAYER SMOS        drawing  93  0   (255,255,0,255)   f t stipple14  solid      ;
+LAYER Polimide    drawing  98  0   (230,31,13,255)   t t stipple113 solid      ;
+LAYER EXTBlock    drawing  111 0   (94,0,230,255)    f t I1         solid      ;
+LAYER NExtHV      drawing  116 0   (255,255,0,255)   f t stipple49  solid      ;
+LAYER PExtHV      drawing  117 0   (255,255,0,255)   f t stipple50  solid      ;
+LAYER MEMPAD      drawing  124 0   (255,255,0,255)   f t stipple41  solid      ;
+LAYER HafniumOx   drawing  143 0   (255,128,0,255)   f t dagger     mLine      ;
+LAYER MEMVia      drawing  145 0   (217,204,0,255)   f t blank      solid      ;
+LAYER RFMEM       drawing  147 0   (255,128,0,255)   f t I1         solid      ; 
+LAYER FGEtch      drawing  153 0   (94,0,230,255)    f t dot1       solid      ;
+LAYER CtrGat      drawing  154 0   (255,255,255,255) f t blank      solid      ;
+LAYER FGImp       drawing  155 0   (216,0,0,255)     f t blank      solid      ;
+LAYER AlCuStop    drawing  159 0   (255,255,204,255) f t blank      solid      ;
+LAYER prBoundary  drawing  189 0   (153,0,230,255)   t t I1         solid      ;
+LAYER Exchange0   drawing  190 0   (0,204,102,255)   t t stipple42  lineStyle0 ;
+LAYER Exchange1   drawing  191 0   (255,255,0,255)   t t stipple46  lineStyle0 ;
+LAYER Exchange2   drawing  192 0   (255,191,242,255) t t stipple47  lineStyle0 ;
+LAYER Exchange3   drawing  193 0   (0,255,255,255)   t t stipple48  lineStyle0 ;
+LAYER Exchange4   drawing  194 0   (255,128,0,255)   t t stipple49  lineStyle0 ;
+LAYER isoNWell    drawing  257 0   (255,0,255,255)   t t I1         solid      ;
+//
+LAYER Activ       label    1   1   (0,255,0,255)     t t x          lineStyle0 ;
+LAYER GatPoly     label    5   1   (191,64,38,255)   t t x          lineStyle0 ;
+LAYER PolyRes     label    128 1   (191,64,38,255)   t f x          lineStyle0 ;
+LAYER NWell       label    31  1   (38,140,107,255)  f t x          lineStyle1 ;
+LAYER nBuLay      label    32  1   (140,140,166,255) f t stipple113 solid      ;
+LAYER Metal1      label    8   1   (57,191,255,255)  f t m1         solid      ;
+LAYER Metal2      label    10  1   (204,204,217,255) f t m2         solid      ;
+LAYER Metal3      label    30  1   (216,0,0,255)     f t m3         lineStyle0 ;
+LAYER Metal4      label    50  1   (147,232,55,255)  f t m4         lineStyle0 ;
+LAYER Metal5      label    67  1   (220,209,70,255)  f t m5         solid      ;
+LAYER TopMetal1   label    126 1   (255,230,191,255) t t tm1        solid      ;
+LAYER TopMetal2   label    134 1   (255,128,0,255)   f t x          solid      ;
+LAYER Passiv      label    9   1   (230,31,13,255)   f t x          solid      ;
+LAYER RES         label    24  1   (191,64,38,255)   f t blank      tdots      ;
+LAYER SRAM        label    25  1   (255,255,0,255)   f t x          solid      ;
+LAYER BasPoly     label    13  1   (191,64,38,255)   f t x          lineStyle0 ;
+LAYER BackMetal1  label    20  1   (255,230,191,255) f t tm1        solid      ;
+LAYER PWell       label    46  1   (255,255,0,255)   f t blank      solid      ;
+LAYER Polimide    label    98  1   (230,31,13,255)   f t stipple113 solid      ;
+LAYER prBoundary  label    189 1   (153,0,230,255)   t t I1         solid      ;
+LAYER Exchange0   label    190 1   (0,255,0,255)     t t x          solid      ;
+LAYER Exchange1   label    191 1   (255,255,0,255)   t t stipple11  solid      ;
+LAYER Exchange2   label    192 1   (255,191,242,255) t t stipple11  solid      ;
+LAYER Exchange3   label    193 1   (0,255,255,255)   t t I1         solid      ;
+LAYER Exchange4   label    194 1   (255,128,0,255)   t t I1         solid      ;
+//
+LAYER Activ       pin      1   2   (0,255,0,255)     f t stipple40  dashed     ;
+LAYER GatPoly     pin      5   2   (191,64,38,255)   t t dagger     lineStyle0 ;
+LAYER PolyRes     pin      128 2   (191,64,38,255)   t f x          solid      ;
+LAYER NWell       pin      31  2   (38,140,107,255)  f t x          lineStyle0 ;
+LAYER nBuLay      pin      32  2   (140,140,166,255) f t stipple113 solid      ;
+LAYER Metal1      pin      8   2   (57,191,255,255)  t t m1         solid      ;
+LAYER Metal2      pin      10  2   (204,204,217,255) t t m2         solid      ;
+LAYER Metal3      pin      30  2   (216,0,0,255)     t t m3         solid      ;
+LAYER Metal4      pin      50  2   (147,232,55,255)  t t m4         solid      ;
+LAYER Metal5      pin      67  2   (220,209,70,255)  t t m5         solid      ;
+LAYER TopMetal1   pin      126 2   (255,230,191,255) t t tm1        solid      ;
+LAYER TopMetal2   pin      134 2   (255,128,0,255)   t t tm2        solid      ;
+LAYER Passiv      pin      9   2   (230,31,13,255)   t t x          solid      ;
+LAYER IND         pin      27  2   (255,255,0,255)   t t blank      solid      ;
+LAYER Recog       pin      99  2   (189,204,204,255) t t blank      solid      ;
+LAYER BasPoly     pin      13  2   (191,64,38,255)   f t x          lineStyle0 ;
+LAYER BackMetal1  pin      20  2   (255,230,191,255) t t tm1        solid      ;
+LAYER PWell       pin      46  2   (255,255,0,255)   f t blank      solid      ;
+LAYER Polimide    pin      98  2   (230,31,13,255)   t t stipple113 solid      ;
+LAYER Exchange0   pin      190 2   (0,204,102,255)   t t stipple11  solid      ;
+LAYER Exchange1   pin      191 2   (255,255,0,255)   t t stipple11  solid      ;
+LAYER Exchange2   pin      192 2   (255,191,242,255) t t stipple11  solid      ;
+LAYER Exchange3   pin      193 2   (0,255,255,255)   t t stipple11  solid      ;
+LAYER Exchange4   pin      194 2   (255,128,0,255)   t t stipple11  solid      ;
+//
+LAYER Activ       net      1   3   (0,255,0,255)     f t stipple40  dashed     ;
+LAYER GatPoly     net      5   3   (191,64,38,255)   f t dagger     lineStyle0 ;
+LAYER PolyRes     net      128 3   (191,64,38,255)   f t dagger     lineStyle0 ;
+LAYER NWell       net      31  3   (38,140,107,255)  f t hZigZag    lineStyle1 ;
+LAYER nBuLay      net      32  3   (140,140,166,255) f t stipple113 solid      ;
+LAYER Cont        net      6   3   (0,255,255,255)   f t ct         lineStyle0 ;
+LAYER Metal1      net      8   3   (57,191,255,255)  f t m1         solid      ;
+LAYER Via1        net      19  3   (204,204,255,255) f t v1         lineStyle0 ;
+LAYER Metal2      net      10  3   (204,204,217,255) f t m2         lineStyle0 ;
+LAYER Via2        net      29  3   (255,55,54,255)   f t v2         mLine      ;
+LAYER Metal3      net      30  3   (216,0,0,255)     f t m3         solid      ;
+LAYER MIM         net      36  3   (38,140,107,255)  f t stipple105 solid      ;
+LAYER Via3        net      49  3   (155,169,64,255)  f t v3         lineStyle0 ;
+LAYER Metal4      net      50  3   (147,232,55,255)  f t m4         lineStyle0 ;
+LAYER Via4        net      66  3   (155,169,64,255)  f t v4         solid      ;
+LAYER Metal5      net      67  3   (220,209,70,255)  f t m5         solid      ;
+LAYER TopVia1     net      125 3   (255,230,191,255) f t tv1        solid      ;
+LAYER TopMetal1   net      126 3   (255,230,191,255) f t tm1        solid      ;
+LAYER TopVia2     net      133 3   (255,128,0,255)   f t tv2        solid      ;
+LAYER TopMetal2   net      134 3   (255,128,0,255)   f t tm2        solid      ;
+LAYER Passiv      net      9   3   (230,31,13,255)   f t x          solid      ;
+LAYER BasPoly     net      13  3   (191,64,38,255)   f t stipple15  lineStyle0 ;
+LAYER BackMetal1  net      20  3   (255,230,191,255) f t tm1        solid      ;
+LAYER PWell       net      46  3   (255,255,0,255)   f t dots10     solid      ;
+LAYER Polimide    net      98  3   (230,31,13,255)   f t stipple113 solid      ;
+//
+LAYER Activ       boundary 1   4   (0,255,0,255)     f t x          lineStyle0 ;
+LAYER GatPoly     boundary 5   4   (191,64,38,255)   f t dagger     lineStyle0 ;
+LAYER PolyRes     boundary 128 4   (191,64,38,255)   f f dagger     lineStyle0 ;
+LAYER NWell       boundary 31  4   (38,140,107,255)  f t x          lineStyle1 ;
+LAYER nBuLay      boundary 32  4   (140,140,166,255) f t stipple113 solid      ;
+LAYER Cont        boundary 6   4   (0,255,255,255)   f t ct         lineStyle0 ;
+LAYER Metal1      boundary 8   4   (57,191,255,255)  f t I1         solid      ;
+LAYER Via1        boundary 19  4   (204,204,255,255) f t v1         lineStyle0 ;
+LAYER Metal2      boundary 10  4   (204,204,217,255) f t m2         lineStyle0 ;
+LAYER Via2        boundary 29  4   (255,55,54,255)   f t v2         solid      ;
+LAYER Metal3      boundary 30  4   (216,0,0,255)     f t m3         lineStyle0 ;
+LAYER MIM         boundary 36  4   (38,140,107,255)  f t x          solid      ;
+LAYER Via3        boundary 49  4   (155,169,64,255)  f t v3         lineStyle0 ;
+LAYER Metal4      boundary 50  4   (147,232,55,255)  f t m4         lineStyle0 ;
+LAYER Via4        boundary 66  4   (155,169,64,255)  f t v4         solid      ;
+LAYER Metal5      boundary 67  4   (220,209,70,255)  f t m5         solid      ;
+LAYER TopVia1     boundary 125 4   (255,230,191,255) f t I1         solid      ;
+LAYER TopMetal1   boundary 126 4   (255,230,191,255) f t I1         solid      ;
+LAYER TopVia2     boundary 133 4   (255,128,0,255)   f t I1         solid      ;
+LAYER TopMetal2   boundary 134 4   (255,128,0,255)   f t x          solid      ;
+LAYER Passiv      boundary 9   4   (230,31,13,255)   f t x          solid      ;
+LAYER IND         boundary 27  4   (255,255,0,255)   f t I1         solid      ;
+LAYER EdgeSeal    boundary 39  4   (94,0,230,255)    t t I1         solid      ;
+LAYER SRAM        boundary 25  4   (255,255,0,255)   f t I1         solid      ;
+LAYER BasPoly     boundary 13  4   (191,64,38,255)   f t x          lineStyle0 ;
+LAYER BackMetal1  boundary 20  4   (255,230,191,255) f t I1         solid      ;
+LAYER PWell       boundary 46  4   (255,255,0,255)   f t I1         solid      ;
+LAYER prBoundary  boundary 189 4   (153,0,230,255)   t t I1         dashed     ;
+//
+LAYER DigiBnd     drawing0 16  10  (255,0,0,255)     t t dot1       tdots      ;
+//
+LAYER Activ       lvs      1   19  (255,255,0,255)   t t I1         solid      ;
+//
+LAYER Activ       mask     1   20  (0,255,0,255)     f t stipple40  dashed     ;
+LAYER Metal1      mask     8   20  (57,191,255,255)  t t m1         lineStyle0 ;
+LAYER Metal2      mask     10  20  (204,204,217,255) t t m2         solid      ;
+LAYER Metal3      mask     30  20  (216,0,0,255)     t t m3         solid      ;
+LAYER Metal4      mask     50  20  (147,232,55,255)  t t m4         lineStyle0 ;
+LAYER Metal5      mask     67  20  (220,209,70,255)  t t m5         solid      ;
+LAYER TopMetal1   mask     126 20  (255,230,191,255) t t tm1        solid      ;
+LAYER TopMetal2   mask     134 20  (255,128,0,255)   t t tm2        solid      ;
+LAYER BackMetal1  mask     20  20  (255,230,191,255) f t tm1        solid      ;
+//
+LAYER nBuLay      block    32  21  (38,140,107,255)  f t x          solid      ;
+LAYER PWell       block    46  21  (255,128,0,255)   t t dot1       solid      ;
+LAYER nSD         block    7   21  (0,204,102,255)   t t cross      solid      ;
+//
+LAYER Activ       filler   1   22  (0,255,0,255)     t t vZigZag    dashed     ;
+LAYER GatPoly     filler   5   22  (191,64,38,255)   t t dagger     solid      ;
+LAYER Metal1      filler   8   22  (57,191,255,255)  t t m1         dashed     ;
+LAYER Metal2      filler   10  22  (204,204,217,255) t t m2         dashed     ;
+LAYER Metal3      filler   30  22  (216,0,0,255)     t t m3         dashed     ;
+LAYER Metal4      filler   50  22  (147,232,55,255)  t t m4         dashed     ;
+LAYER Metal5      filler   67  22  (220,209,70,255)  t t m5         dashed     ;
+LAYER TopMetal1   filler   126 22  (255,230,191,255) t t tm1        dashed     ;
+LAYER TopMetal2   filler   134 22  (255,128,0,255)   t t m1         dashed     ;
+LAYER BackMetal1  filler   20  22  (255,230,191,255) t t I1         solid      ;
+LAYER SiWG        filler   86  22  (216,0,0,255)     f t stipple12  dashed     ;
+LAYER GraphMetal1 filler   109 22  (0,179,0,255)     f t m5         dashed     ;
+LAYER GraphMet1L  filler   110 22  (52,183,171,255)  f t m4         dashed     ;
+LAYER SiNWG       filler   119 22  (255,255,204,255) f t stipple12  dashed     ;
+//
+LAYER Activ       nofill   1   23  (0,255,0,255)     t t I1         tdots      ;
+LAYER GatPoly     nofill   5   23  (191,64,38,255)   t t I1         tdots      ;
+LAYER Metal1      nofill   8   23  (57,191,255,255)  t t I1         tdots      ;
+LAYER Metal2      nofill   10  23  (204,204,217,255) t t I1         tdots      ;
+LAYER Metal3      nofill   30  23  (216,0,0,255)     t t I1         tdots      ;
+LAYER Metal4      nofill   50  23  (147,232,55,255)  t t I1         tdots      ;
+LAYER Metal5      nofill   67  23  (220,209,70,255)  t t I1         tdots      ;
+LAYER TopMetal1   nofill   126 23  (255,230,191,255) t t I1         tdots      ;
+LAYER TopMetal2   nofill   134 23  (255,128,0,255)   t t I1         tdots      ;
+LAYER BackMetal1  nofill   20  23  (255,230,191,255) t t tm1        solid      ;
+LAYER SiWG        nofill   86  23  (216,0,0,255)     f t I1         tdots      ;
+LAYER GraphMetal1 nofill   109 23  (0,179,0,255)     f t I1         tdots      ;
+LAYER GraphMet1L  nofill   110 23  (52,183,171,255)  f t I1         tdots      ;
+LAYER SiNWG       nofill   119 23  (255,255,204,255) f t I1         tdots      ;
+//
+LAYER Metal1      slit     8   24  (57,191,255,255)  t t I1         dashed     ;
+LAYER Metal2      slit     10  24  (204,204,217,255) t t I1         dashed     ;
+LAYER Metal3      slit     30  24  (216,0,0,255)     t t I1         dashed     ;
+LAYER Metal4      slit     50  24  (147,232,55,255)  t t I1         dashed     ;
+LAYER Metal5      slit     67  24  (220,209,70,255)  t t I1         dashed     ;
+LAYER TopMetal1   slit     126 24  (255,230,191,255) t t I1         dashed     ;
+LAYER TopMetal2   slit     134 24  (255,128,0,255)   t t I1         dashed     ;
+LAYER BackMetal1  slit     20  24  (255,230,191,255) t t tm1        solid      ;
+LAYER GraphMetal1 slit     109 24  (0,179,0,255)     f t I1         dashed     ;
+LAYER GraphMet1L  slit     110 24  (52,183,171,255)  f t I1         dashed     ;
+//
+LAYER Substrate   text     40  25  (57,191,255,255)  t t m1         lineStyle0 ;
+LAYER Metal1      text     8   25  (57,191,255,255)  t t m1         lineStyle0 ;
+LAYER Metal2      text     10  25  (204,204,217,255) t t m2         thickLine  ;
+LAYER Metal3      text     30  25  (216,0,0,255)     t t m3         solid      ;
+LAYER Metal4      text     50  25  (147,232,55,255)  t t m4         solid      ;
+LAYER Metal5      text     67  25  (220,209,70,255)  t t m5         solid      ;
+LAYER TopMetal1   text     126 25  (255,230,191,255) t t blank      solid      ;
+LAYER TopMetal2   text     134 25  (255,128,0,255)   t t tm2        solid      ;
+LAYER IND         text     27  25  (255,255,0,255)   t t blank      solid      ;
+LAYER BackMetal1  text     20  25  (57,191,255,255)  t t m1         lineStyle0 ;
+LAYER Exchange0   text     190 25  (204,184,153,255) t t x          solid      ;
+LAYER Exchange1   text     191 25  (0,204,102,255)   t t x          solid      ;
+LAYER Exchange2   text     192 25  (255,118,251,255) t t x          solid      ;
+LAYER Exchange3   text     193 25  (255,186,49,255)  t t x          solid      ;
+LAYER Exchange4   text     194 25  (57,191,255,255)  t t x          solid      ;
+//
+LAYER Activ       OPC      1   26  (0,204,102,255)   f t stipple119 solid      ;
+LAYER GatPoly     OPC      5   26  (153,0,230,255)   f t I1         shortDash  ;
+LAYER Cont        OPC      6   26  (255,255,0,255)   f t I1         shortDash  ;
+LAYER Metal1      OPC      8   26  (255,255,0,255)   f t I1         doubleDash ;
+LAYER Metal2      OPC      10  26  (255,255,0,255)   f t I1         dashed     ;
+LAYER Metal3      OPC      30  26  (255,255,0,255)   f t I1         doubleDash ;
+LAYER Metal4      OPC      50  26  (255,255,0,255)   f t I1         dashDot    ;
+LAYER Metal5      OPC      67  26  (255,255,0,255)   f t I1         dashDot    ;
+LAYER BiWind      OPC      3   26  (30,0,255,255)    f t I1         dots       ;
+LAYER EmWind      OPC      33  26  (255,255,0,255)   f t I1         dashDot    ;
+LAYER BackMetal1  OPC      20  26  (255,230,191,255) f t tm1        solid      ;
+LAYER GraphMetal1 OPC      109 26  (0,179,0,255)     f t I1         dashDot    ;
+LAYER GraphMet1L  OPC      110 26  (52,183,171,255)  f t I1         dashDot    ;
+//
+LAYER Activ       iOPC     1   27  (0,255,0,255)     f t dot1000    solid      ;
+LAYER GatPoly     iOPC     5   27  (255,255,0,255)   f t stipple50  solid      ;
+//
+LAYER Activ       noqrc    1   28  (255,0,0,255)     t t x          solid      ;
+LAYER GatPoly     noqrc    5   28  (255,0,0,255)     t t x          solid      ;
+LAYER Metal1      noqrc    8   28  (255,0,0,255)     t t x          solid      ;
+LAYER Metal2      noqrc    10  28  (255,0,0,255)     t t x          solid      ;
+LAYER Metal3      noqrc    30  28  (255,0,0,255)     t t x          solid      ;
+LAYER Metal4      noqrc    50  28  (255,0,0,255)     t t x          solid      ;
+LAYER Metal5      noqrc    67  28  (255,0,0,255)     t t x          solid      ;
+LAYER TopMetal1   noqrc    126 28  (255,0,0,255)     t t x          solid      ;
+LAYER TopMetal2   noqrc    134 28  (255,0,0,255)     t t x          solid      ;
+LAYER BackMetal1  noqrc    20  28  (255,0,0,255)     t t x          solid      ;
+//
+LAYER Metal1      res      8   29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER Metal2      res      10  29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER Metal3      res      30  29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER Metal4      res      50  29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER Metal5      res      67  29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER TopMetal1   res      126 29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER TopMetal2   res      134 29  (191,64,38,255)   t t stipple16  tdots      ;
+LAYER BackMetal1  res      20  29  (191,64,38,255)   t t stipple16  tdots      ;
+//
+LAYER Recog       esd      99  30  (255,255,0,255)   t t I1         solid      ;
+//
+LAYER Recog       diode    99  31  (94,0,230,255)    t t I1         solid      ;
+//
+LAYER Recog       tsv      99  32  (255,255,0,255)   t t I1         solid      ;
+//
+LAYER Metal1      iprobe   8   33  (57,191,255,255)  t t I1         tdots      ;
+LAYER Metal2      iprobe   10  33  (204,204,217,255) t t I1         tdots      ;
+LAYER Metal3      iprobe   30  33  (216,0,0,255)     t t I1         tdots      ;
+LAYER Metal4      iprobe   50  33  (216,0,0,255)     t t I1         tdots      ;
+LAYER Metal5      iprobe   67  33  (220,209,70,255)  t t I1         tdots      ;
+LAYER TopMetal1   iprobe   126 33  (255,230,191,255) t t I1         tdots      ;
+LAYER TopMetal2   iprobe   134 33  (255,128,0,255)   t t I1         tdots      ;
+LAYER Recog       iprobe   99  33  (217,230,255,255) t t blank      lineStyle0 ;
+LAYER BackMetal1  iprobe   20  33  (255,230,191,255) t t I1         tdots      ;
+//
+LAYER Metal1      diffprb  8   34  (57,191,255,255)  t t I1         tdots      ;
+LAYER Metal2      diffprb  10  34  (204,204,217,255) t t I1         tdots      ;
+LAYER Metal3      diffprb  30  34  (216,0,0,255)     t t I1         tdots      ;
+LAYER Metal4      diffprb  50  34  (216,0,0,255)     t t I1         tdots      ;
+LAYER Metal5      diffprb  67  34  (220,209,70,255)  t t I1         tdots      ;
+LAYER TopMetal1   diffprb  126 34  (255,230,191,255) t t I1         tdots      ;
+LAYER TopMetal2   diffprb  134 34  (255,128,0,255)   t t I1         tdots      ;
+LAYER Recog       diffprb  99  34  (217,230,255,255) t t blank      lineStyle0 ;
+LAYER BackMetal1  diffprb  20  34  (255,230,191,255) t t I1         tdots      ;
+//
+LAYER Passiv      pillar   9   35  (230,31,13,255)   t t x          solid      ;
+LAYER dfpad       pillar   41  35  (94,0,230,255)    t t I1         mLine      ;
+LAYER Recog       pillar   99  35  (94,0,230,255)    t t I1         mLine      ;
+//
+LAYER Passiv      sbump    9   36  (230,31,13,255)   t t x          solid      ;
+LAYER dfpad       sbump    41  36  (94,0,230,255)    t t I1         mLine      ;
+LAYER Recog       sbump    99  36  (94,0,230,255)    t t I1         mLine      ;
+//
+LAYER Recog       otp      99  37  (217,204,0,255)   t t I1         solid      ;
+//
+LAYER Recog       pdiode   99  38  (255,255,0,255)   t t I1         solid      ;
+//
+LAYER Recog       mom      99  39  (38,140,107,255)  t t blank      solid      ;
+//
+LAYER Passiv      pdl      9   40  (230,31,13,255)   f t x          tdots2     ;
+//
+LAYER NoRCX       m2m3     148 41  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m2m4     148 42  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m2m5     148 43  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m2tm1    148 44  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m2tm2    148 45  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m3m4     148 46  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m3m5     148 47  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m3tm1    148 48  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m3tm2    148 49  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m4m5     148 50  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m4tm1    148 51  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m4tm2    148 52  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m5tm1    148 53  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m5tm2    148 54  (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       tm1tm2   148 55  (255,0,0,255)     f f x          solid      ;
+//
+LAYER Recog       pcm      99  100 (255,255,204,255) t t I1         dashed     ;
+//
+LAYER NoRCX       m1sub    148 123 (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m2sub    148 124 (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m3sub    148 125 (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m4sub    148 126 (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       m5sub    148 127 (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       tm1sub   148 300 (255,0,0,255)     f f x          solid      ;
+//
+LAYER NoRCX       tm2sub   148 301 (255,0,0,255)     f f x          solid      ;
+//
+// Layer functions
+//
+FUNCTION Activ      drawing  DIFFUSION    ;
+//
+FUNCTION GatPoly    drawing  POLY         ;
+//
+FUNCTION NWell      drawing  WELL         ;
+FUNCTION PWell      drawing  WELL         ;
+//
+FUNCTION nBuLay     drawing  IMPLANT      ;
+FUNCTION pSD        drawing  IMPLANT      ;
+FUNCTION nSD        drawing  IMPLANT      ;
+//
+FUNCTION Metal1     drawing  ROUTING      ;
+FUNCTION Metal2     drawing  ROUTING      ;
+FUNCTION Metal3     drawing  ROUTING      ;
+FUNCTION Metal4     drawing  ROUTING      ;
+FUNCTION Metal5     drawing  ROUTING      ;
+FUNCTION TopMetal1  drawing  ROUTING      ;
+FUNCTION TopMetal2  drawing  ROUTING      ;
+//
+FUNCTION Via1       drawing  CUT          ;
+FUNCTION Via2       drawing  CUT          ;
+FUNCTION Via3       drawing  CUT          ;
+FUNCTION Via4       drawing  CUT          ;
+FUNCTION Vmim       drawing  CUT          ;
+FUNCTION TopVia1    drawing  CUT          ;
+FUNCTION TopVia2    drawing  CUT          ;
+//
+FUNCTION Activ      pin      PIN          ;
+FUNCTION GatPoly    pin      PIN          ;
+FUNCTION PolyRes    pin      PIN          ;
+FUNCTION NWell      pin      PIN          ;
+FUNCTION nBuLay     pin      PIN          ;
+FUNCTION Metal1     pin      PIN          ;
+FUNCTION Metal2     pin      PIN          ;
+FUNCTION Metal3     pin      PIN          ;
+FUNCTION Metal4     pin      PIN          ;
+FUNCTION Metal5     pin      PIN          ;
+FUNCTION TopMetal1  pin      PIN          ;
+FUNCTION TopMetal2  pin      PIN          ;
+FUNCTION Passiv     pin      PIN          ;
+FUNCTION IND        pin      PIN          ;
+FUNCTION Recog      pin      PIN          ;
+FUNCTION BasPoly    pin      PIN          ;
+FUNCTION BackMetal1 pin      PIN          ;
+FUNCTION PWell      pin      PIN          ;
+FUNCTION Polimide   pin      PIN          ;
+FUNCTION Exchange0  pin      PIN          ;
+FUNCTION Exchange1  pin      PIN          ;
+FUNCTION Exchange2  pin      PIN          ;
+FUNCTION Exchange3  pin      PIN          ;
+FUNCTION Exchange4  pin      PIN          ;
+//
+FUNCTION Activ      net      PIN          ;
+FUNCTION GatPoly    net      PIN          ;
+FUNCTION PolyRes    net      PIN          ;
+FUNCTION NWell      net      PIN          ;
+FUNCTION nBuLay     net      PIN          ;
+FUNCTION Cont       net      PIN          ;
+FUNCTION Metal1     net      PIN          ;
+FUNCTION Via1       net      PIN          ;
+FUNCTION Metal2     net      PIN          ;
+FUNCTION Via2       net      PIN          ;
+FUNCTION Metal3     net      PIN          ;
+FUNCTION MIM        net      PIN          ;
+FUNCTION Via3       net      PIN          ;
+FUNCTION Metal4     net      PIN          ;
+FUNCTION Via4       net      PIN          ;
+FUNCTION Metal5     net      PIN          ;
+FUNCTION TopVia1    net      PIN          ;
+FUNCTION TopMetal1  net      PIN          ;
+FUNCTION TopVia2    net      PIN          ;
+FUNCTION TopMetal2  net      PIN          ;
+FUNCTION Passiv     net      PIN          ;
+FUNCTION BasPoly    net      PIN          ;
+FUNCTION BackMetal1 net      PIN          ;
+FUNCTION PWell      net      PIN          ;
+FUNCTION Polimide   net      PIN          ;
+//
+FUNCTION Activ      boundary BLOCKAGE     ;
+FUNCTION GatPoly    boundary BLOCKAGE     ;
+FUNCTION PolyRes    boundary BLOCKAGE     ;
+FUNCTION NWell      boundary BLOCKAGE     ;
+FUNCTION NWell      boundary BLOCKAGE     ;
+FUNCTION nBuLay     boundary BLOCKAGE     ;
+FUNCTION Cont       boundary BLOCKAGE     ;
+FUNCTION Metal1     boundary BLOCKAGE     ;
+FUNCTION Via1       boundary BLOCKAGE     ;
+FUNCTION Metal2     boundary BLOCKAGE     ;
+FUNCTION Via2       boundary BLOCKAGE     ;
+FUNCTION Metal3     boundary BLOCKAGE     ;
+FUNCTION MIM        boundary BLOCKAGE     ;
+FUNCTION Via3       boundary BLOCKAGE     ;
+FUNCTION Metal4     boundary BLOCKAGE     ;
+FUNCTION Via4       boundary BLOCKAGE     ;
+FUNCTION Metal5     boundary BLOCKAGE     ;
+FUNCTION TopVia1    boundary BLOCKAGE     ;
+FUNCTION TopMetal1  boundary BLOCKAGE     ;
+FUNCTION TopVia2    boundary BLOCKAGE     ;
+FUNCTION TopMetal2  boundary BLOCKAGE     ;
+FUNCTION Passiv     boundary BLOCKAGE     ;
+FUNCTION IND        boundary BLOCKAGE     ;
+FUNCTION EdgeSeal   boundary BLOCKAGE     ;
+FUNCTION SRAM       boundary BLOCKAGE     ;
+FUNCTION BasPoly    boundary BLOCKAGE     ;
+FUNCTION BackMetal1 boundary BLOCKAGE     ;
+FUNCTION PWell      boundary BLOCKAGE     ;
+FUNCTION prBoundary boundary BLOCKAGE     ;
+//
+// Layer conectivity
+//
+CONNECT Activ     drawing BY Cont    drawing TO Metal1    drawing ;
+CONNECT GatPoly   drawing BY Cont    drawing TO Metal1    drawing ;
+CONNECT PolyRes   drawing BY Cont    drawing TO Metal1    drawing ;
+CONNECT Metal1    drawing BY Via1    drawing TO Metal2    drawing ;
+CONNECT Metal2    drawing BY Via2    drawing TO Metal3    drawing ;
+CONNECT Metal3    drawing BY Via3    drawing TO Metal4    drawing ;
+CONNECT Metal4    drawing BY Via4    drawing TO Metal5    drawing ;
+CONNECT Metal5    drawing BY TopVia1 drawing TO TopMetal1 drawing ;
+CONNECT MIM       drawing BY TopVia1 drawing TO TopMetal1 drawing ;
+CONNECT MIM       drawing BY Vmim    drawing TO TopMetal1 drawing ;
+CONNECT TopMetal1 drawing BY TopVia2 drawing TO TopMetal2 drawing ;
+// 
+// Grid size
+//
+MFGGRID 0.005 ;
+//
+// Technology rules
+//
+MINWIDTH NWell       drawing  0.620 ;
+MINSPACE NWell       drawing  0.620 ;
+MINWIDTH PWell       block    0.620 ;
+MINSPACE PWell       block    0.620 ;
+MINSPACE PWell       block    NWell     drawing   0.620 ;
+MINWIDTH nBuLay      drawing  1.000 ;
+MINSPACE nBuLay      drawing  1.500 ;
+MINWIDTH nBuLay      block    1.500 ;
+MINSPACE nBuLay      block    1.000 ;
+MINENC   nBuLay      drawing  nBuLay    block    1.000 ;
+MINSPACE nBuLay      block    nBuLay    drawing  1.500 ;
+MINWIDTH Activ       drawing  0.150 ;
+MINSPACE Activ       drawing  0.210 ;
+MINEXT   Activ       drawing  GatPoly   drawing  0.230 ;
+MINAREA  Activ       drawing  0.122 ;
+MINWIDTH Activ       filler   1.000 ;
+MINSPACE Activ       filler   0.420 ;
+MINSPACE Activ       filler   Cont      drawing  1.100 ;
+MINSPACE Activ       filler   GatPoly   drawing  1.100 ;
+MINSPACE Activ       filler   Activ     drawing  0.420 ;
+MINSPACE Activ       filler   NWell     drawing  1.000 ;
+MINSPACE Activ       filler   nBuLay    drawing  1.000 ;
+MINENC   NWell       drawing  Activ     filler   1.000 ;
+MINENC   nBuLay      drawing  Activ     filler   1.000 ;
+MINSPACE Activ       filler   TRANS     drawing  1.000 ;
+MINSPACE Activ       filler   PWell     block    1.500 ;
+MINENC   PWell       block    Activ     filler   1.500 ;
+MINEXT   ThickGateOx drawing  Activ     drawing  0.270 ;
+MINSPACE ThickGateOx drawing  Activ     drawing  0.270 ;
+MINSPACE ThickGateOx drawing  0.860 ;
+MINWIDTH ThickGateOx drawing  0.860 ;
+MINWIDTH GatPoly     drawing  0.130 ;
+MINSPACE GatPoly     drawing  0.180 ;
+MINEXT   GatPoly     drawing  Activ     drawing  0.180 ;
+MINSPACE GatPoly     drawing  Activ     drawing  0.070 ;
+MINAREA  GatPoly     drawing  0.090 ;
+MINWIDTH GatPoly     filler   0.700 ;
+MINSPACE GatPoly     filler   0.800 ;
+MINSPACE GatPoly     filler   Activ     drawing  1.100 ;
+MINSPACE GatPoly     filler   GatPoly   drawing  1.100 ;
+MINSPACE GatPoly     filler   Cont      drawing  1.100 ;
+MINSPACE GatPoly     filler   pSD       drawing  1.100 ;
+MINSPACE GatPoly     filler   nSD       block    1.100 ;
+MINSPACE GatPoly     filler   SalBlock  drawing  1.100 ;
+MINSPACE GatPoly     filler   NWell     drawing  1.100 ;
+MINSPACE GatPoly     filler   nBuLay    drawing  1.100 ;
+MINENC   NWell       drawing  GatPoly   filler   1.100 ;
+MINENC   nBuLay      drawing  GatPoly   filler   1.100 ;
+MINSPACE GatPoly     filler   TRANS     drawing  1.100 ;
+MINEXT   GatPoly     filler   Activ     filler   0.180 ;
+MINWIDTH pSD         drawing  0.310 ;
+MINSPACE pSD         drawing  0.310 ;
+MINAREA  pSD         drawing  0.250 ;
+MINWIDTH nSD         block    0.310 ;
+MINSPACE nSD         block    0.310 ;
+MINSPACE nSD         block    pSD       drawing  0.310 ;
+MINSPACE nSD         block    Cont      drawing  0.000 ;
+MINWIDTH EXTBlock    drawing  0.310 ;
+MINSPACE EXTBlock    drawing  0.310 ;
+MINSPACE EXTBlock    drawing  pSD       drawing  0.310 ;
+MINWIDTH SalBlock    drawing  0.420 ;
+MINSPACE SalBlock    drawing  0.420 ;
+MINEXT   SalBlock    drawing  Activ     drawing  0.200 ;
+MINEXT   SalBlock    drawing  GatPoly   drawing  0.200 ;
+MINSPACE SalBlock    drawing  Activ     drawing  0.200 ;
+MINSPACE SalBlock    drawing  GatPoly   drawing  0.200 ;
+MINSPACE SalBlock    drawing  Cont      drawing  0.200 ;
+MINWIDTH Cont        drawing  0.160 ;
+MINSPACE Cont        drawing  0.180 ;
+MINENC   Activ       drawing  Cont      drawing  0.070 ;
+MINENC   GatPoly     drawing  Cont      drawing  0.070 ;
+MINWIDTH Metal1      drawing  0.160 ;
+MINSPACE Metal1      drawing  0.180 ;
+MINENC   Metal1      drawing  Cont      drawing  0.050 ;
+MINAREA  Metal1      drawing  0.090 ;
+MINWIDTH Metal2      drawing  0.200 ;
+MINSPACE Metal2      drawing  0.210 ;
+MINENC   Metal2      drawing  Via1      drawing  0.050 ;
+MINAREA  Metal2      drawing  0.144 ;
+MINWIDTH Metal3      drawing  0.200 ;
+MINSPACE Metal3      drawing  0.210 ;
+MINENC   Metal3      drawing  Via2      drawing  0.050 ;
+MINAREA  Metal3      drawing  0.144 ;
+MINWIDTH Metal4      drawing  0.200 ;
+MINSPACE Metal4      drawing  0.210 ;
+MINENC   Metal4      drawing  Via3      drawing  0.050 ;
+MINAREA  Metal4      drawing  0.144 ;
+MINWIDTH Metal5      drawing  0.200 ;
+MINSPACE Metal5      drawing  0.210 ;
+MINENC   Metal5      drawing  Via4      drawing  0.050 ;
+MINAREA  Metal5      drawing  0.144 ;
+MINWIDTH Metal1      filler   1.000 ;
+MINSPACE Metal1      filler   0.420 ;
+MINSPACE Metal1      filler   Metal1    drawing  0.420 ;
+MINSPACE Metal1      filler   Metal2    drawing  0.420 ;
+MINSPACE Metal1      filler   Metal3    drawing  0.420 ;
+MINSPACE Metal1      filler   Metal4    drawing  0.420 ;
+MINSPACE Metal1      filler   Metal5    drawing  0.420 ;
+MINSPACE Metal1      filler   TRANS     drawing  1.000 ;
+MINWIDTH Metal2      filler   1.000 ;
+MINSPACE Metal2      filler   0.420 ;
+MINSPACE Metal2      filler   Metal1    drawing  0.420 ;
+MINSPACE Metal2      filler   Metal2    drawing  0.420 ;
+MINSPACE Metal2      filler   Metal3    drawing  0.420 ;
+MINSPACE Metal2      filler   Metal4    drawing  0.420 ;
+MINSPACE Metal2      filler   Metal5    drawing  0.420 ;
+MINSPACE Metal2      filler   TRANS     drawing  1.000 ;
+MINWIDTH Metal3      filler   1.000 ;
+MINSPACE Metal3      filler   0.420 ;
+MINSPACE Metal3      filler   Metal1    drawing  0.420 ;
+MINSPACE Metal3      filler   Metal2    drawing  0.420 ;
+MINSPACE Metal3      filler   Metal3    drawing  0.420 ;
+MINSPACE Metal3      filler   Metal4    drawing  0.420 ;
+MINSPACE Metal3      filler   Metal5    drawing  0.420 ;
+MINSPACE Metal3      filler   TRANS     drawing  1.000 ;
+MINWIDTH Metal4      filler   1.000 ;
+MINSPACE Metal4      filler   0.420 ;
+MINSPACE Metal4      filler   Metal1    drawing  0.420 ;
+MINSPACE Metal4      filler   Metal2    drawing  0.420 ;
+MINSPACE Metal4      filler   Metal3    drawing  0.420 ;
+MINSPACE Metal4      filler   Metal4    drawing  0.420 ;
+MINSPACE Metal4      filler   Metal5    drawing  0.420 ;
+MINSPACE Metal4      filler   TRANS     drawing  1.000 ;
+MINWIDTH Metal5      filler   1.000 ;
+MINSPACE Metal5      filler   0.420 ;
+MINSPACE Metal5      filler   Metal1    drawing  0.420 ;
+MINSPACE Metal5      filler   Metal2    drawing  0.420 ;
+MINSPACE Metal5      filler   Metal3    drawing  0.420 ;
+MINSPACE Metal5      filler   Metal4    drawing  0.420 ;
+MINSPACE Metal5      filler   Metal5    drawing  0.420 ;
+MINSPACE Metal5      filler   TRANS     drawing  1.000 ;
+MINWIDTH Via1        drawing  0.190 ;
+MINSPACE Via1        drawing  0.220 ;
+MINENC   Metal1      drawing  Via1      drawing  0.050 ;
+MINWIDTH Via2        drawing  0.190 ;
+MINSPACE Via2        drawing  0.220 ;
+MINWIDTH Via3        drawing  0.190 ;
+MINSPACE Via3        drawing  0.220 ;
+MINWIDTH Via4        drawing  0.190 ;
+MINSPACE Via4        drawing  0.220 ;
+MINENC   Metal2      drawing  Via2      drawing  0.050 ;
+MINENC   Metal3      drawing  Via3      drawing  0.050 ;
+MINENC   Metal4      drawing  Via4      drawing  0.050 ;
+MINWIDTH TopVia1     drawing  0.420 ;
+MINSPACE TopVia1     drawing  0.420 ;
+MINENC   Metal5      drawing  TopVia1   drawing  0.100 ;
+MINENC   TopMetal1   drawing  TopVia1   drawing  0.420 ;
+MINWIDTH TopMetal1   drawing  1.640 ;
+MINSPACE TopMetal1   drawing  1.640 ;
+MINWIDTH TopMetal1   filler   5.000 ;
+MINSPACE TopMetal1   filler   3.000 ;
+MINSPACE TopMetal1   filler   TopMetal1 drawing  3.000 ;
+MINSPACE TopMetal1   filler   TRANS     drawing  4.900 ;
+MINWIDTH TopVia2     drawing  0.900 ;
+MINSPACE TopVia2     drawing  1.060 ;
+MINENC   TopMetal1   drawing  TopVia1   drawing  0.500 ;
+MINENC   TopMetal2   drawing  TopVia1   drawing  0.500 ;
+MINWIDTH TopMetal2   drawing  2.000 ;
+MINSPACE TopMetal2   drawing  2.000 ;
+MINWIDTH TopMetal2   filler   5.000 ;
+MINSPACE TopMetal2   filler   3.000 ;
+MINSPACE TopMetal2   filler   TopMetal2 drawing  3.000 ;
+MINSPACE TopMetal2   filler   TRANS     drawing  4.900 ;
+MINWIDTH Passiv      drawing  2.100 ;
+MINSPACE Passiv      drawing  3.500 ;
+MINENC   TopMetal2   drawing  Passiv    drawing  2.100 ;
+//
+// VIA creation
+//
+VIA a_m1
+	Activ     drawing -0.150 -0.150 0.150 0.150
+	Cont      drawing -0.080 -0.080 0.080 0.080
+	Metal1    drawing -0.145 -0.145 0.145 0.145
+;
+VIA p_m1
+	GatPoly   drawing -0.150 -0.150 0.150 0.150
+	Cont      drawing -0.080 -0.080 0.080 0.080
+	Metal1    drawing -0.145 -0.145 0.145 0.145
+;
+VIA m1_m2
+	Metal1    drawing -0.145 -0.145 0.145 0.145
+	Via1      drawing -0.095 -0.095 0.095 0.095
+	Metal2    drawing -0.145 -0.145 0.145 0.145
+;
+VIA m2_m3
+	Metal2    drawing -0.145 -0.145 0.145 0.145
+	Via2      drawing -0.095 -0.095 0.095 0.095
+	Metal3    drawing -0.145 -0.145 0.145 0.145
+;
+VIA m3_m4
+	Metal3    drawing -0.145 -0.145 0.145 0.145
+	Via3      drawing -0.095 -0.095 0.095 0.095
+	Metal4    drawing -0.145 -0.145 0.145 0.145
+;
+VIA m4_m5
+	Metal4    drawing -0.145 -0.145 0.145 0.145
+	Via4      drawing -0.095 -0.095 0.095 0.095
+	Metal5    drawing -0.145 -0.145 0.145 0.145
+;
+VIA m5_tm1
+	Metal5    drawing -0.310 -0.310 0.310 0.310
+	TopVia1   drawing -0.210 -0.210 0.210 0.210
+	TopMetal1 drawing -0.820 -0.820 0.820 0.820
+;
+VIA tm1_tm2
+	TopMetal1 drawing -0.950 -0.950 0.950 0.950
+	TopVia2   drawing -0.450 -0.450 0.450 0.450
+	TopMetal2 drawing -1.000 -1.000 1.000 1.000
+;
+//
+// Defining MultiPartPaths
+//
+//
+MPP nguard LAYER NWell     drawing WIDTH 0.78 BEGEXT 0.390 ENDEXT 0.390                        ;
+MPP nguard LAYER Activ     drawing WIDTH 0.30 BEGEXT 0.150 ENDEXT 0.150                        ;
+MPP nguard LAYER Cont      drawing WIDTH 0.16 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.18 LENGTH 0.16 ;
+MPP nguard LAYER Metal1    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP pguard LAYER Activ     drawing WIDTH 0.30 BEGEXT 0.150 ENDEXT 0.150                        ;
+MPP pguard LAYER pSD       drawing WIDTH 0.36 BEGEXT 0.180 ENDEXT 0.180                        ;
+MPP pguard LAYER Cont      drawing WIDTH 0.16 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.18 LENGTH 0.16 ;
+MPP pguard LAYER Metal1    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP pm1    LAYER GatPoly   drawing WIDTH 0.30 BEGEXT 0.150 ENDEXT 0.150                        ;
+MPP pm1    LAYER Cont      drawing WIDTH 0.16 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.18 LENGTH 0.16 ;
+MPP pm1    LAYER Metal1    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP m1m2   LAYER Metal1    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+MPP m1m2   LAYER Via1      drawing WIDTH 0.19 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.22 LENGTH 0.19 ;
+MPP m1m2   LAYER Metal2    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP m2m3   LAYER Metal2    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+MPP m2m3   LAYER Via2      drawing WIDTH 0.19 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.22 LENGTH 0.19 ;
+MPP m2m3   LAYER Metal3    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP m3m4   LAYER Metal3    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+MPP m3m4   LAYER Via3      drawing WIDTH 0.19 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.22 LENGTH 0.19 ;
+MPP m3m4   LAYER Metal4    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP m4m5   LAYER Metal4    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+MPP m4m5   LAYER Via4      drawing WIDTH 0.19 BEGEXT 0.000 ENDEXT 0.000 SPACE 0.22 LENGTH 0.19 ;
+MPP m4m5   LAYER Metal5    drawing WIDTH 0.29 BEGEXT 0.145 ENDEXT 0.145                        ;
+//
+MPP m5tm1  LAYER Metal5    drawing WIDTH 0.62 BEGEXT 0.0 ENDEXT 0.0                        ;
+MPP m5tm1  LAYER TopVia1   drawing WIDTH 0.42 BEGEXT 0.0 ENDEXT 0.0 SPACE 0.42 LENGTH 0.42 ;
+MPP m5tm1  LAYER TopMetal1 drawing WIDTH 1.64 BEGEXT 0.0 ENDEXT 0.0                        ;
+//
+MPP tm1tm2 LAYER TopMetal1 drawing WIDTH 1.90 BEGEXT 0.950 ENDEXT 0.950                        ;
+MPP tm1tm2 LAYER TopVia2   drawing WIDTH 0.90 BEGEXT 0.000 ENDEXT 0.000 SPACE 1.06 LENGTH 0.90 ;
+MPP tm1tm2 LAYER TopMetal2 drawing WIDTH 2.00 BEGEXT 1.000 ENDEXT 1.000                        ;
+//
+// Layer heights and thicknesses
+//
+METLYR Metal1    drawing HEIGHT 5.540  THICKNESS 0.420 ;
+VIALYR Via1      drawing HEIGHT 5.960  THICKNESS 0.540 ;
+METLYR Metal2    drawing HEIGHT 6.500  THICKNESS 0.490 ;
+VIALYR Via2      drawing HEIGHT 6.990  THICKNESS 0.540 ;
+METLYR Metal3    drawing HEIGHT 7.530  THICKNESS 0.490 ;
+VIALYR Via3      drawing HEIGHT 8.020  THICKNESS 0.540 ;
+METLYR Metal4    drawing HEIGHT 8.560  THICKNESS 0.490 ;
+VIALYR Via4      drawing HEIGHT 9.050  THICKNESS 0.540 ;
+METLYR Metal5    drawing HEIGHT 9.590  THICKNESS 0.490 ;
+METLYR MIM       drawing HEIGHT 10.120 THICKNESS 0.150 ;
+VIALYR Vmim      drawing HEIGHT 10.270 THICKNESS 0.660 ;
+VIALYR TopVia1   drawing HEIGHT 10.080 THICKNESS 0.850 ;
+METLYR TopMetal1 drawing HEIGHT 10.930 THICKNESS 2.000 ;
+VIALYR TopVia2   drawing HEIGHT 12.930 THICKNESS 2.800 ;
+METLYR TopMetal2 drawing HEIGHT 15.730 THICKNESS 3.000 ;
+//
+// Device mapping
+//
+MAP nmos          TO nmos          layout ;
+MAP pmos          TO pmos          layout ;
+MAP inmos         TO inmos         layout ;
+MAP hv_nmos       TO hv_nmos       layout ;
+MAP hv_pmos       TO hv_pmos       layout ;
+MAP hv_inmos      TO hv_inmos      layout ;
+MAP rsil          TO rsil          layout ;
+MAP rppd          TO rppd          layout ;
+MAP rhigh         TO rhigh         layout ;
+MAP schottky_nbl1 TO schottky_nbl1 layout ;
+MAP s_varicap     TO s_varicap     layout ;
+MAP mim           TO mim           layout ;
+MAP npn13g2       TO npn13g2       layout ;
+//
+// Line definitions
+//
+LINE thickLine  2 SOLID      ;
+LINE solid      1 SOLID      ;
+LINE mLine      0 SOLID      ;
+LINE doubleDash 2 DASH       ;
+LINE dashed     1 DASH       ;
+LINE shortDash  0 DASH       ;
+LINE tdots2     0 DASHDOTDOT ;
+LINE dashDot    2 DASHDOT    ;
+LINE lineStyle1 1 DASHDOT    ;
+LINE tdots      0 DASHDOT    ;
+LINE dots       1 DOT        ;
+LINE lineStyle0 0 DOT        ;
+//
+// Fill definitions
+//
+STIPPLE I1         HOLLOW  ;
+STIPPLE blank      STIPPLE  
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE dagger     STIPPLE  
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+1 1 1 1 1 0 0 0 1 1 1 1 1 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 1 1 1 1 1 0 0 0 1 1 1 1 1 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+;
+STIPPLE cross      STIPPLE  
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+;
+STIPPLE hZigZag    STIPPLE 
+1 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0
+0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0
+0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1
+1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+0 1 1 0 0 0 0 0 0 1 1 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0
+0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0
+1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1
+0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 0
+0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0
+0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1
+;
+STIPPLE vZigZag    STIPPLE 
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 
+1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 
+0 1 0 0 0 0 1 0 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0 
+0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 1 
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 
+1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 
+0 1 0 0 0 0 1 0 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0 
+0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 1
+;
+STIPPLE vLine      STIPPLE 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+;
+STIPPLE stipple11  STIPPLE
+0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 
+0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 
+0 1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 
+1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 
+0 1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 
+0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 
+0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 
+0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 
+0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 
+0 1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 
+1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 
+0 1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 
+0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 
+0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0
+;
+STIPPLE stipple12  STIPPLE
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple13  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple14  STIPPLE 
+0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0
+;
+STIPPLE stipple15  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0
+;
+STIPPLE stipple16  STIPPLE 
+1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 
+0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 
+1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 
+0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 
+1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 
+0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 
+1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 
+0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 
+1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 
+0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 
+0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 
+1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1
+;
+STIPPLE stipple37  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+;
+STIPPLE stipple39  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 
+1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0
+;
+STIPPLE stipple40  STIPPLE 
+0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple41  STIPPLE 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+;
+STIPPLE stipple42  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 1 0 0 1 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple45  STIPPLE 
+0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0
+;
+STIPPLE stipple46  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 1 0 0 0 0 0 1 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple47  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+;
+STIPPLE stipple48  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple49  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple50  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 1 0 1 0 0 1 0 1 0 0 1 0 1 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 1 0 1 0 0 1 0 1 0 0 1 0 1 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 1 0 1 0 0 1 0 1 0 0 1 0 1 0 
+0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple63  STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple103 STIPPLE 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple105 STIPPLE 
+0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 
+0 0 1 0 0 1 1 1 0 1 1 1 0 0 1 0 
+0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 
+1 0 0 1 1 1 0 0 1 0 0 1 1 1 0 0 
+0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 
+0 1 1 1 0 0 1 0 0 0 1 0 0 1 1 1 
+0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 
+1 1 0 0 1 0 0 1 1 1 0 0 1 0 0 1 
+0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 
+0 0 1 0 0 1 1 1 0 1 1 1 0 0 1 0 
+0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 
+1 0 0 1 1 1 0 0 1 0 0 1 1 1 0 0 
+0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 
+0 1 1 1 0 0 1 0 0 0 1 0 0 1 1 1 
+0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 
+1 1 0 0 1 0 0 1 1 1 0 0 1 0 0 1
+;
+STIPPLE stipple113 STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE stipple119 STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0
+;
+STIPPLE ct         STIPPLE 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE m1         STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE v1         STIPPLE 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE m2         STIPPLE 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE v2         STIPPLE 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE m3         STIPPLE 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+;
+STIPPLE v3         STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+;
+STIPPLE m4         STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+;
+STIPPLE v4         STIPPLE 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+;
+STIPPLE m5         STIPPLE 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+;
+STIPPLE m6         STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+;
+STIPPLE tv1        STIPPLE 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE tm1        STIPPLE 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE tv2        STIPPLE 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0
+;
+STIPPLE tm2        STIPPLE 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE x          STIPPLE 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 
+0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 
+0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1
+;
+STIPPLE dot1       STIPPLE 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE dot1000    STIPPLE 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+;
+STIPPLE Polystp    STIPPLE 
+0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 
+0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 
+0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 
+1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 
+0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 
+0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 
+1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 
+0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0
+;
+STIPPLE tnal       STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+;
+STIPPLE triangle   STIPPLE 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 
+0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 
+1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 
+0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;
+STIPPLE metal2S    STIPPLE 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 
+0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 
+0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 
+0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 
+0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 
+1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+;
+STIPPLE dots10     STIPPLE 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+;

@@ -9,7 +9,7 @@ def pad(cv, w=30e-6) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    width = int(w * 1e9)
+    width = max(int(w * 1e6 * dbu), int(w * 1e9))
     #
     # Layer rules
     #

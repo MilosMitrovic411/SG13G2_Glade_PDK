@@ -11,8 +11,8 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
     dbu = lib.dbuPerUU()
     nx = int(x)
     ny = int(y)
-    width = int(w * 1e9)
-    length = int(l * 1e9)
+    width = max(int(w * 1e6 * dbu), int(w * 1e9))
+    length = max(int(l * 1e6 * dbu), int(l * 1e9))
     #
     # Layer rules
     #
@@ -327,6 +327,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                 ny = int((width - 2 * activ_en_cont + space) / (cont_width + space))
             x_offset = int((length - (nx * (cont_width + space) - space)) / 2)
             y_offset = int((width - (ny * (cont_width + space) - space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xc0 = int(x_offset + n * (cont_width + space))
@@ -360,6 +364,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                 ny = int((width - 2 * gatepoly_en_cont + space) / (cont_width + space))
             x_offset = int((length - (nx * (cont_width + space) - space)) / 2)
             y_offset = int((width - (ny * (cont_width + space) - space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xc0 = int(x_offset + n * (cont_width + space))
@@ -384,6 +392,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
             x_offset = int((length - (nx * (via_width + space) - space)) / 2)
             y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xv0 = int(x_offset + n * (via_width + space))
@@ -408,6 +420,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
             x_offset = int((length - (nx * (via_width + space) - space)) / 2)
             y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xv0 = int(x_offset + n * (via_width + space))
@@ -432,6 +448,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
             x_offset = int((length - (nx * (via_width + space) - space)) / 2)
             y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xv0 = int(x_offset + n * (via_width + space))
@@ -456,6 +476,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
             x_offset = int((length - (nx * (via_width + space) - space)) / 2)
             y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xv0 = int(x_offset + n * (via_width + space))
@@ -480,6 +504,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             x_offset = int((length - (nx * (tvia1_width + tvia1_space) - tvia1_space)) / 2)
             ny = int((width - 2 * tmetal1_en_tvia1 + tvia1_space) / (tvia1_width + tvia1_space))
             y_offset = int((width - (ny * (tvia1_width + tvia1_space) - tvia1_space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xtv10 = int(x_offset + n * (tvia1_width + tvia1_space))
@@ -499,6 +527,10 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             x_offset = int((length - (nx * (tvia2_width + tvia2_space) - tvia2_space)) / 2)
             ny = int((width - 2 * tmetal2_en_tvia2 + tvia2_space) / (tvia2_width + tvia2_space))
             y_offset = int((width - (ny * (tvia2_width + tvia2_space) - tvia2_space)) / 2)
+            if x_offset%xygrid!=0 :
+                x_offset = int(xygrid * int(x_offset / xygrid))
+            if y_offset%xygrid!=0 :
+                y_offset = int(xygrid * int(y_offset / xygrid))
             for n in range(nx) :
                 for m in range(ny) :
                     xtv10 = int(x_offset + n * (tvia2_width + tvia2_space))

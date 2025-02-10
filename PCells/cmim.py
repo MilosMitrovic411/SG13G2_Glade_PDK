@@ -9,15 +9,15 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    width = int(w * 1e9)
-    cap = int(c * 1e18)
+    width = max(int(w * 1e6 * dbu), int(w * 1e9))
+    cap = max(int(c * 1e15 * dbu), int(c * 1e18))
     length = int(cap / (width * 1.5 / dbu))
     if (calculate == "L") : 
         length = int(cap / (width * 1.5 / dbu))
         cv.dbReplaceProp("l", 1e-6 * length / dbu)
         cv.update()
     if (calculate == "C") :
-        length = int(l * 1e6 * dbu)
+        length = max(int(l * 1e6 * dbu), int(l * 1e9))
         cap = float(width * length * 1.5 / (dbu * dbu))
         cv.dbReplaceProp("c", 1e-15 * cap)
         cv.update()
@@ -93,6 +93,8 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
             s_cont = topvia1_space
             top_en_via = min_topmetal1_en_topvia1
         offset = abs(int((width - (2 * mim_en_topvia1 + n_cont * (topvia1_width + s_cont) - s_cont)) / 2))
+        if offset%xygrid!=0 :
+            offset = int(xygrid * int(offset / xygrid))
         for n in range(n_cont) :
             xc0 = int(mim_en_topvia1)
             yc0 = int(mim_en_topvia1 + offset + n * (topvia1_width + s_cont))
@@ -119,6 +121,8 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
             s_cont = topvia1_space
             top_en_via = min_topmetal1_en_topvia1
         offset = abs(int((length - (2 * mim_en_topvia1 + n_cont * (topvia1_width + s_cont) - s_cont)) / 2))
+        if offset%xygrid!=0 :
+            offset = int(xygrid * int(offset / xygrid))
         for n in range(n_cont) :
             xc0 = int(mim_en_topvia1 + offset + n * (topvia1_width + s_cont))
             yc0 = int(mim_en_topvia1)
@@ -147,6 +151,10 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
             top_en_via = min_topmetal1_en_topvia1
         w_offset = abs(int((width - (2 * mim_en_topvia1 + n_cont * (topvia1_width + s_cont) - s_cont)) / 2))
         l_offset = abs(int((length - (2 * mim_en_topvia1 + m_cont * (topvia1_width + s_cont) - s_cont)) / 2))
+        if w_offset%xygrid!=0 :
+            w_offset = int(xygrid * int(w_offset / xygrid))
+        if l_offset%xygrid!=0 :
+            l_offset = int(xygrid * int(l_offset / xygrid))
         for n in range(n_cont) :
             for m in range(m_cont) :
                 xc0 = int(mim_en_topvia1 + l_offset + m * (topvia1_width + s_cont))

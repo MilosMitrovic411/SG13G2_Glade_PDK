@@ -6,9 +6,9 @@ def sealring(cv, w=50e-6, l=50e-6, d=30e-6) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    width = int(w * 1e9)
-    length = int(w * 1e9)
-    distance = int(d * 1e9)
+    width = int(w * 1e6 * dbu)
+    length = int(w * 1e6 * dbu)
+    distance = int(d * 1e6 * dbu)
     #
     # Layer rules
     #

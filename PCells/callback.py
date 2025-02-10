@@ -33,7 +33,7 @@ def callback(pyDBObject) :
             select = inst.dbGetListProp("calculate", True)  
         print("Calculation mode: ", end="")
         print(select)
-        w = int(inst.dbGetFloatProp("w", True) * 1e6 * dbu)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(1.14 * dbu)) :
             w = int(1.14 * dbu)
             inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -45,7 +45,7 @@ def callback(pyDBObject) :
                 print("The width value is of grid, adjusting. The new width value is: w=", end="")
                 print(1e-6 * w / dbu)
         if (select == "L") :
-            c = int(inst.dbGetFloatProp("c", True) * 1e15 * dbu)
+            c = max(int(inst.dbGetFloatProp("c", True) * 1e15 * dbu), int(inst.dbGetFloatProp("c", True) * 1e18))
             if (c < int(1.95 * dbu)) :
                 c = int(1.95 * dbu)
                 inst.dbReplaceProp("c", 1e-15 * c / dbu)
@@ -75,7 +75,7 @@ def callback(pyDBObject) :
             print(1e-6 * l / dbu)
             print()
         if (select == "C") :
-            l = int(inst.dbGetFloatProp("l", True) * 1e6 * dbu)
+            l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
             if (l < int(1.14 * dbu)) :
                 l = int(1.14 * dbu)
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -103,7 +103,7 @@ def callback(pyDBObject) :
             select = inst.dbGetListProp("calculate", True)
         print("Calculation mode: ", end="")
         print(select)
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(0.5 * dbu)) :
             w = int(0.5 * dbu)
             inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -133,7 +133,7 @@ def callback(pyDBObject) :
             print(1e-6 * l / dbu)
             print()
         if (select == "R") :
-            l = int(inst.dbGetFloatProp("l", True) * 1e9)
+            l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
             if (l < int(0.5 * dbu)) :
                 l = int(0.5 * dbu)
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -156,7 +156,7 @@ def callback(pyDBObject) :
             select = inst.dbGetListProp("calculate", True)
         print("Calculation mode: ", end="")
         print(select)
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(0.5 * dbu)) :
             w = int(0.5 * dbu)
             inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -186,7 +186,7 @@ def callback(pyDBObject) :
             print(1e-6 * l / dbu)
             print()
         if (select == "R") :
-            l = int(inst.dbGetFloatProp("l", True) * 1e9)
+            l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
             if (l < int(0.5 * dbu)) :
                 l = int(0.5 * dbu)
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -209,7 +209,7 @@ def callback(pyDBObject) :
             select = inst.dbGetListProp("calculate", True)
         print("Calculation mode: ", end="")
         print(select)
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(0.5 * dbu)) :
             w = int(0.5 * dbu)
             inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -239,7 +239,7 @@ def callback(pyDBObject) :
             print(1e-6 * l / dbu)
             print()
         if (select == "R") :
-            l = int(inst.dbGetFloatProp("l", True) * 1e9)
+            l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
             if (l < int(0.5 * dbu)) :
                 l = int(0.5 * dbu)
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -360,13 +360,13 @@ def callback(pyDBObject) :
                 print(1e-6 * w / dbu)
                 print()
         if (select == "w&l") :
-            w = int(inst.dbGetFloatProp("w", True) * 1e9)
+            w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
             if w%xygrid!=0 :
                 w = int(xygrid * int(w / xygrid))
                 inst.dbReplaceProp("w", 1e-6 * w / dbu)
                 print("The width value is of grid, adjusting. The new width value is: w=", end="")
                 print(1e-6 * w / dbu)
-            l = int(inst.dbGetFloatProp("l", True) * 1e9)
+            l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
             if l%xygrid!=0 :
                 l = int(xygrid * int(l / xygrid))
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -496,30 +496,25 @@ def callback(pyDBObject) :
                 print(y)
                 print()
     if (name == "mos") :
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
-        if w%xygrid!=0 :
-                w = int(xygrid * int(w / xygrid))
-                inst.dbReplaceProp("w", 1e-6 * w / dbu)
-                print("The width value is of grid, adjusting. The new width value is: w=", end="")
-                print(1e-6 * w / dbu)
-        if (w < int(0.15 * dbu)) :
-                w = int(0.15 * dbu)
-                inst.dbReplaceProp("w", 1e-6 * w / dbu)
-                print("The width value is smaller then minimal, adjusting. The new width value is: w=", end="")
-                print(1e-6 * w / dbu)
-        l = int(inst.dbGetFloatProp("l", True) * 1e9)
+        select = inst.dbGetListProp("calculate", True)
+        if (not select) :
+            inst.dbAddProp("calculate", "finger_width", "[finger_width, total_width]")
+            select = inst.dbGetListProp("calculate", True)  
+        print("Calculation mode: ", end="")
+        print(select)
+        l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
         if (cell_name.find("nmosHV") >= 0) :
             if (l < int(0.45 * dbu)) :
                 l = int(0.45 * dbu)
-                inst.dbReplaceProp("w", 1e-6 * w / dbu)
-                print("The length value is smaller then minimal, adjusting. The new width value is: l=", end="")
-                print(1e-6 * w / dbu)
+                inst.dbReplaceProp("l", 1e-6 * l / dbu)
+                print("The length value is smaller then minimal, adjusting. The new width length is: l=", end="")
+                print(1e-6 * l / dbu)
         elif (cell_name.find("pmosHV") >= 0) :
             if (l < int(0.4 * dbu)) :
                 l = int(0.4 * dbu)
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
-                print("The length value is smaller then minimal, adjusting. The new width value is: l=", end="")
-                print(1e-6 * w / dbu)
+                print("The length value is smaller then minimal, adjusting. The new length value is: l=", end="")
+                print(1e-6 * l / dbu)
         else :
             if (l < int(0.13 * dbu)) :
                 l = int(0.13 * dbu)
@@ -534,15 +529,66 @@ def callback(pyDBObject) :
             inst.dbReplaceProp("l", 1e-6 * l / dbu)
             print("The length value is of grid, adjusting. The new length value is: l=", end="")
             print(1e-6 * l / dbu)
-        f = int(inst.dbGetIntProp("ng", True))
-        if (f < 1):
-            f = 1
-            inst.dbReplaceProp("ng", f)
+        nf = int(inst.dbGetIntProp("ng", True))
+        if (nf < 1):
+            nf = 1
+            inst.dbReplaceProp("ng", nf)
             print("Do you actually want a transistor? Have one anyway: ng=1")
             print("_    ////   _")
             print(" \_( O_o')_/")
+        if (select == "finger_width") :
+            w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
+            if (w < int(0.15 * dbu)) :
+                w = int(0.15 * dbu)
+                inst.dbReplaceProp("w", 1e-6 * w / dbu)
+                print("The width value is smaller then minimal, adjusting. The new width value is: w=", end="")
+                print(1e-6 * w / dbu)
+            if w%xygrid!=0 :
+                w = int(xygrid * int(w / xygrid))
+                inst.dbReplaceProp("w", 1e-6 * w / dbu)
+                print("The width value is of grid, adjusting. The new width value is: w=", end="")
+                print(1e-6 * w / dbu)
+            fw = int(w / nf)
+            if (fw < int(0.15 * dbu)) :
+                fw = int(0.15 * dbu)
+                w = int(fw * nf)
+                inst.dbReplaceProp("fw", 1e-6 * fw / dbu)
+                inst.dbReplaceProp("w", 1e-6 * w / dbu)
+                print("The finger width value is smaller then minimal, adjusting. The new finger width value is: fw=", end="")
+                print(1e-6 * fw / dbu)
+                print("The new width value, based on selected number of fingers and derived finger width: w=", end="")
+                print(1e-6 * w / dbu)
+            elif fw%xygrid!=0 :
+                fw = int(xygrid * int(fw / xygrid))
+                w = int(fw * nf)
+                inst.dbReplaceProp("fw", 1e-6 * fw / dbu)
+                inst.dbReplaceProp("w", 1e-6 * w / dbu)
+                print("The finger width value is of grid, adjusting. The new finger width value is: fw=", end="")
+                print(1e-6 * fw / dbu)
+                print("The new width value, based on selected number of fingers and derived finger width: w=", end="")
+                print(1e-6 * w / dbu)
+            else :
+                inst.dbReplaceProp("fw", 1e-6 * fw / dbu)
+                print("The finger width value is: fw=", end="")
+                print(1e-6 * fw / dbu)
+        if (select == "total_width") :
+            fw = max(int(inst.dbGetFloatProp("fw", True) * 1e6 * dbu), int(inst.dbGetFloatProp("fw", True) * 1e9))
+            if (fw < int(0.15 * dbu)) :
+                fw = int(0.15 * dbu)
+                inst.dbReplaceProp("fw", 1e-6 * fw / dbu)
+                print("The finger width value is smaller then minimal, adjusting. The new finger width value is: fw=", end="")
+                print(1e-6 * fw / dbu)
+            if fw%xygrid!=0 :
+                fw = int(xygrid * int(fw / xygrid))
+                inst.dbReplaceProp("fw", 1e-6 * fw / dbu)
+                print("The finger width value is of grid, adjusting. The new finger width value is: fw=", end="")
+                print(1e-6 * fw / dbu)
+            w = int(fw * nf)
+            inst.dbReplaceProp("w", 1e-6 * w / dbu)
+            print("The total width value is: w=", end="")
+            print(1e-6 * w / dbu)
     if (name == "isolbox") :
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if w%xygrid!=0 :
                 w = int(xygrid * int(w / xygrid))
                 inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -553,7 +599,7 @@ def callback(pyDBObject) :
                 inst.dbReplaceProp("w", 1e-6 * w / dbu)
                 print("The width value is smaller then minimal, adjusting. The new width value is: w=", end="")
                 print(1e-6 * w / dbu)
-        l = int(inst.dbGetFloatProp("l", True) * 1e9)
+        l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
         if l%xygrid!=0 :
             l = int(xygrid * int(l / xygrid))
             inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -565,7 +611,7 @@ def callback(pyDBObject) :
                 print("The length value is smaller then minimal, adjusting. The new length value is: l=", end="")
                 print(1e-6 * l / dbu)
     if (name == "pad") :
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if w%xygrid!=0 :
                 w = int(xygrid * int(w / xygrid))
                 inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -582,7 +628,7 @@ def callback(pyDBObject) :
                 print("The width value is larger then maximal, adjusting. The new width value is: w=", end="")
                 print(1e-6 * w / dbu)
     if (name == "sealring") :
-        w = int(inst.dbGetFloatProp("w", True) * 1e9)
+        w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if w%xygrid!=0 :
                 w = int(xygrid * int(w / xygrid))
                 inst.dbReplaceProp("w", 1e-6 * w / dbu)
@@ -593,7 +639,7 @@ def callback(pyDBObject) :
                 inst.dbReplaceProp("w", 1e-6 * w / dbu)
                 print("The width value is smaller then minimal, adjusting. The new width value is: w=", end="")
                 print(1e-6 * w / dbu)
-        l = int(inst.dbGetFloatProp("l", True) * 1e9)
+        l = max(int(inst.dbGetFloatProp("l", True) * 1e6 * dbu), int(inst.dbGetFloatProp("l", True) * 1e9))
         if l%xygrid!=0 :
             l = int(xygrid * int(l / xygrid))
             inst.dbReplaceProp("l", 1e-6 * l / dbu)
@@ -604,7 +650,7 @@ def callback(pyDBObject) :
                 inst.dbReplaceProp("l", 1e-6 * l / dbu)
                 print("The length value is smaller then minimal, adjusting. The new length value is: l=", end="")
                 print(1e-6 * l / dbu)
-        d = int(inst.dbGetFloatProp("d", True) * 1e9)
+        d = max(int(inst.dbGetFloatProp("d", True) * 1e6 * dbu), int(inst.dbGetFloatProp("d", True) * 1e9))
         if d%xygrid!=0 :
             d = int(xygrid * int(d / xygrid))
             inst.dbReplaceProp("d", 1e-6 * d / dbu)

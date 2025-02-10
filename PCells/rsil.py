@@ -10,8 +10,8 @@ def rsil(cv, r=7.0, w=0.5e-6, l=0.5e-6, calculate=["L", "R"]) :
     tech = lib.tech()
     dbu = lib.dbuPerUU()
     res = int(r * dbu)
-    width = int(w * 1e9)
-    length = int(l * 1e9)
+    width = max(int(w * 1e6 * dbu), int(w * 1e9))
+    length = max(int(l * 1e6 * dbu), int(l * 1e9))
     if (calculate == "L") :
         res = int(r * dbu)
         length = int(res * width / (7 * dbu))
@@ -79,6 +79,8 @@ def rsil(cv, r=7.0, w=0.5e-6, l=0.5e-6, calculate=["L", "R"]) :
     if (n_cont > 1) :
         s_cont = cont_space
     offset = abs(int((width - (2 * gatpoly_en_cont + n_cont * (cont_width + s_cont) - s_cont)) / 2))
+    if offset%xygrid!=0 :
+        offset = int(xygrid * int(offset / xygrid))
     for n in range(n_cont) :
         r = Rect(int(-(res_to_cont + cont_width)), int(gatpoly_en_cont + offset + n * (cont_width + s_cont)), int(-res_to_cont), int(gatpoly_en_cont + offset + cont_width + n * (cont_width + s_cont)))
         cont = cv.dbCreateRect(r, layer)

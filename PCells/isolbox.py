@@ -9,8 +9,8 @@ def isolbox(cv, w=4e-6, l=4e-6) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    width = int(w * 1.0e6 * dbu)
-    length = int(l * 1.0e6 * dbu)
+    width = max(int(w * 1e6 * dbu), int(w * 1e9))
+    length = max(int(l * 1e6 * dbu), int(l * 1e9))
     #
     # Layer rules
     #

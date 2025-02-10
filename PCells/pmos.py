@@ -5,12 +5,14 @@ from ui import *
 #
 # The entry point
 #
-def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_tie=["none", "left", "left&right", "top"], drain_metal=["m1", "m2", "m3"], source_metal=["m1", "m2", "m3"], bulk_metal=["m1", "m2", "m3"]) :
+def pmos(cv, w=0.15e-6, fw=0.15e-6, l=0.13e-6, ng=1, calculate=["finger_width", "total_width"], gate_contacts=["none", "bottom"], body_tie=["none", "left", "left&right", "top"], drain_metal=["m1", "m2", "m3"], source_metal=["m1", "m2", "m3"], bulk_metal=["m1", "m2", "m3"]) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    width = int(w * 1e9)
-    length = int(l * 1e9)
+    total_width = max(int(w * 1e6 * dbu), int(w * 1e9))
+    finger_width = max(int(fw * 1e6 * dbu), int(fw * 1e9))
+    width = int(finger_width)
+    length = max(int(l * 1e6 * dbu), int(l * 1e9))
     n_fingers = int(ng)
     #
     # Layer rules
@@ -50,25 +52,53 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
     #
     # Checking parameters
     #
-    if width%xygrid!=0 :
-        width = int(xygrid * int(width / xygrid))
-        cv.dbReplaceProp("w", 1e-6 * (width / dbu))
+    if (n_fingers < 1) :
+        n_fingers = 1
+        cv.dbReplaceProp("ng", n_fingers)
+        cv.update()
+    if (calculate == "finger_width") :
+        if total_width < min_width :
+            total_width = min_width
+            cv.dbReplaceProp("w", 1e-6 * (total_width / dbu))
+            cv.update()
+        if total_width%xygrid!=0 :
+            total_width = int(xygrid * int(total_width / xygrid))
+            cv.dbReplaceProp("w", 1e-6 * (total_width / dbu))
+            cv.update()
+        finger_width = int(total_width / n_fingers)
+        if finger_width < min_width :
+            finger_width = min_width
+            total_width = int(finger_width * n_fingers)
+            cv.dbReplaceProp("w", 1e-6 * (total_width / dbu))
+            cv.update()
+        if finger_width%xygrid!=0 :
+            finger_width = int(xygrid * int(finger_width / xygrid))
+            total_width = int(finger_width * n_fingers)
+            cv.dbReplaceProp("w", 1e-6 * (total_width / dbu))
+            cv.update() 
+        width = int(finger_width)
+        cv.dbReplaceProp("fw", 1e-6 * (finger_width / dbu))
+        cv.update() 
+    if (calculate == "total_width") :
+        if finger_width < min_width :
+            finger_width = min_width
+            cv.dbReplaceProp("fw", 1e-6 * (finger_width / dbu))
+            cv.update()
+        if finger_width%xygrid!=0 :
+            finger_width = int(xygrid * int(finger_width / xygrid))
+            cv.dbReplaceProp("fw", 1e-6 * (finger_width / dbu))
+            cv.update()
+        total_width = int(finger_width * n_fingers)
+        width = int(finger_width)
+        cv.dbReplaceProp("w", 1e-6 * (total_width / dbu))
         cv.update()
     if length%xygrid!=0 :
         length = int(xygrid * int(length / xygrid))
         cv.dbReplaceProp("l", 1e-6 * (length / dbu))
         cv.update()
-    if width < min_width :
-        width = min_width
-        cv.dbReplaceProp("w", 1e-6 * (width / dbu))
-        cv.update()
     if length < length :
         length = min_length
         cv.dbReplaceProp("l", 1e-6 * (length / dbu))
-        cv.update()
-    if (n_fingers < 1) :
-        n_fingers = 1
-        cv.dbReplaceProp("ng", n_fingers)
         cv.update()
     #
     # Creating the device
@@ -150,6 +180,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
         layer3 = tech.getLayerNum("GatPoly", "drawing")
         if (length < (2 * gatepoly_en_cont + cont_width)) :
             gate_ex_offset = int(((2 * gatepoly_en_cont + cont_width) - length) / 2)
+            if gate_ex_offset%xygrid!=0 :
+                gate_ex_offset = int(xygrid * int(gate_ex_offset / xygrid))
             for n in range(n_fingers) :
                 xm0 = int(n * (length + gate_offset) - gate_ex_offset + gatepoly_en_cont - metal1_en_cont)
                 ym0 = int(-(metal1_space + activ_ex_offset))
@@ -187,6 +219,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
             if (n_cont > 1) :
                 s_cont = cont_space
             offset = int((length - (2 * gatepoly_en_cont + n_cont * (cont_width + s_cont) - s_cont)) / 2)
+            if offset%xygrid!=0 :
+                offset = int(xygrid * int(offset / xygrid))
             for n in range(n_fingers) :
                 xm0 = int(n * (length + gate_offset) + gatepoly_en_cont + offset - metal1_en_cont)
                 ym0 = int(-(metal1_space + activ_ex_offset))
@@ -227,6 +261,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
         if (n_cont > 1) :
             s_cont = cont_space
         offset = int((width - (2 * activ_en_cont + n_cont * (cont_width + s_cont) - s_cont)) / 2)
+        if offset%xygrid!=0 :
+                offset = int(xygrid * int(offset / xygrid))
     for n in range(n_cont) :
         for m in range(n_fingers + 1) :
             r = Rect(int(m * (length + gate_offset)-(y * cont_activ_to_gatpoly + cont_width + cont_offset + x * activ_en_cont)), int(activ_en_cont + offset + n * (cont_width + s_cont) - activ_ex_offset), int(m * (length + gate_offset) - y * cont_activ_to_gatpoly - cont_offset - x * activ_en_cont), int(activ_en_cont + offset + cont_width + n * (cont_width + s_cont) - activ_ex_offset))
@@ -251,6 +287,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
                 layer = tech.getLayerNum("Via1", "drawing")
                 n_via = int(((ym1 - ym0) - 2 * metal_en_via + via_space) / (via_width + via_space))
                 via_offset = int(((ym1 - ym0) - (2 * metal_en_via + n_via * (via_width + via_space) - via_space)) / 2)
+                if via_offset%xygrid!=0 :
+                    via_offset = int(xygrid * int(via_offset / xygrid))
                 for m in range(n_via) :
                     xv0 = int(xm0 + metal_en_via)
                     yv0 = int(ym0 + metal_en_via + m * (via_width + via_space) + via_offset)
@@ -281,6 +319,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
                 layer = tech.getLayerNum("Via1", "drawing")
                 n_via = int(((ym1 - ym0) - 2 * metal_en_via + via_space) / (via_width + via_space))
                 via_offset = int(((ym1 - ym0) - (2 * metal_en_via + n_via * (via_width + via_space) - via_space)) / 2)
+                if via_offset%xygrid!=0 :
+                    via_offset = int(xygrid * int(via_offset / xygrid))
                 for m in range(n_via) :
                     xv0 = int(xm0 + metal_en_via)
                     yv0 = int(ym0 + metal_en_via + m * (via_width + via_space) + via_offset)
@@ -336,6 +376,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
             layer = tech.getLayerNum("Via1", "drawing")
             n_via = int(((ym1 - ym0) - 2 * metal_en_via + via_space) / (via_width + via_space))
             via_offset = int(((ym1 - ym0) - (2 * metal_en_via + n_via * (via_width + via_space) - via_space)) / 2)
+            if via_offset%xygrid!=0 :
+                via_offset = int(xygrid * int(via_offset / xygrid))
             for n in range(n_via) :
                 xv0 = int(xm0 + metal_en_via)
                 yv0 = int(ym0 + metal_en_via + n * (via_width + via_space) + via_offset)
@@ -390,6 +432,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
             layer = tech.getLayerNum("Via1", "drawing")
             n_via = int(((ym1 - ym0) - 2 * metal_en_via + via_space) / (via_width + via_space))
             via_offset = int(((ym1 - ym0) - (2 * metal_en_via + n_via * (via_width + via_space) - via_space)) / 2)
+            if via_offset%xygrid!=0 :
+                via_offset = int(xygrid * int(via_offset / xygrid))
             for n in range(n_via) :
                 xv0 = int(xm0 + metal_en_via)
                 yv0 = int(ym0 + metal_en_via + n * (via_width + via_space) + via_offset)
@@ -424,6 +468,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
         layer = tech.getLayerNum("Cont", "drawing")
         n_cont = int(((xa1 - xa0) - 2 * activ_en_cont + cont_space) / (cont_width + cont_space))
         offset = int(((xa1 - xa0) - (2 * activ_en_cont + n_cont * (cont_width + cont_space) - cont_space)) / 2)
+        if offset%xygrid!=0 :
+                offset = int(xygrid * int(offset / xygrid))
         for n in range(n_cont) :
             xc0 = int(xa0 + activ_en_cont + n * (cont_width + cont_space) + offset)
             yc0 = int(ya0 + activ_en_cont)
@@ -448,6 +494,8 @@ def pmos(cv, w=0.15e-6, l=0.13e-6, ng=1, gate_contacts=["none", "bottom"], body_
             layer = tech.getLayerNum("Via1", "drawing")
             n_via = int(((xm1 - xm0) - 2 * metal_en_via + via_space) / (via_width + via_space))
             via_offset = int(((xm1 - xm0) - (2 * metal_en_via + n_via * (via_width + via_space) - via_space)) / 2)
+            if via_offset%xygrid!=0 :
+                via_offset = int(xygrid * int(via_offset / xygrid))
             for n in range(n_via) :
                 xv0 = int(xm0 + metal_en_via + n * (via_width + via_space) + via_offset)
                 yv0 = int(ym0 + metal_en_via)

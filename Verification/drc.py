@@ -1,6 +1,7 @@
 #
 # Initialise DRC package. 
 #
+from ui import *
 cv = ui().getEditCellView()
 geomBegin(cv)
 #

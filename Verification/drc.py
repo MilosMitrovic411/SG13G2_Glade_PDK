@@ -718,7 +718,7 @@ if ((geomNumShapes(pad) > 0) or (geomNumShapes(sbumppad) > 0) or (geomNumShapes(
     geomSpace(pad, 8.40, "Pad.bR: Min. recommended Pad space < 8.40um")
     geomSpace(pad, edgeseal, 7.50, "Pad.d: Min. Pad space to EdgeSeal < 7.50um")
     geomSpace(pad, edgeseal, 25.00, "Pad.dR: Min. recommended Pad to EdgeSeal space < 25.00um")
-    geomSpace(pad, geomContains(geomSize(geomSize(geomSize(edgeseal, 1e5), -1e5), -3.50), activ)), 11.20, "Pad.d1R: Min. recommended Pad to Activ (inside chip area) space < 11.20um")
+    geomSpace(pad, geomContains(geomSize(geomSize(geomSize(edgeseal, 1e5), -1e5), -3.50), activ), 11.20, "Pad.d1R: Min. recommended Pad to Activ (inside chip area) space < 11.20um")
     geomWidth(geomTouching(dpad, geomOr(metal1, geomOr(metal2, geomOr(metal3, geomOr(metal4, geomOr(metal5, geomOr(topmetal1, topmetal2))))))), 7.00, "Pad.eR: Min. recommended Metal(n), TopMetal1, TopMetal2 exit width < 7.00um")
     geomLength(geomTouching(dpad, geomOr(metal1, geomOr(metal2, geomOr(metal3, geomOr(metal4, geomOr(metal5, geomOr(topmetal1, topmetal2))))))), 7.00, "Pad.fR: Min. recommended Metal(n), TopMetal1, TopMetal2 exit length < 7.00um")
     geomEnclose(geomInside(dpad, topmetal1), topvia2, 1.40, "Pad.gR: Min. recommended TopMetal1 (within dfpad) enclosure of TopVia2 < 1.40um")

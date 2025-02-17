@@ -41,7 +41,8 @@ def pmosHV(cv, w=0.15e-6, fw=0.15e-6, l=0.4e-6, ng=1, calculate=["finger_width",
     psd_en_activ = int(0.18 * dbu)
     psd_ov_activ = int(0.3 * dbu)
     psd_en_cont = int(0.09 * dbu)
-    psd_to_gate = int(0.3 * dbu)
+    psd_to_gate = int(0.4 * dbu)
+    psd_to_ntap = int(0.03 * dbu)
     activ_ex_psd = int(0.3 * dbu)
     metal1_width = int(0.29 * dbu)
     metal1_space = int(0.21 * dbu)
@@ -161,12 +162,12 @@ def pmosHV(cv, w=0.15e-6, fw=0.15e-6, l=0.4e-6, ng=1, calculate=["finger_width",
     # Create pSD implantation layer
     layer = tech.getLayerNum("pSD", "drawing")
     xp0 = int(-(cont_activ_to_gatpoly + cont_width + activ_en_cont + psd_en_activ))
-    yp0 = int(- (psd_en_activ + activ_ex_offset))
+    yp0 = int(-psd_to_gate)
     xp1 = int(n_fingers * (length + gate_offset) - gate_offset + cont_activ_to_gatpoly + cont_width + activ_en_cont + psd_en_activ)
-    yp1 = int(width + psd_en_activ + activ_ex_offset)
+    yp1 = int(width + psd_to_gate)
     if (width < (2 * activ_en_cont + cont_width)) :
-        xp0 = int(xp0 + gate_to_activ)
-        xp1 = int(xp1 - gate_to_activ)
+        xp0 = int(xp0 - gate_to_activ + cont_activ_to_gatpoly - activ_en_cont)
+        xp1 = int(xp1 + gate_to_activ - cont_activ_to_gatpoly + activ_en_cont)
     r = Rect(xp0, yp0, xp1, yp1)
     psd = cv.dbCreateRect(r, layer)
     # Create gate poly
@@ -460,11 +461,10 @@ def pmosHV(cv, w=0.15e-6, fw=0.15e-6, l=0.4e-6, ng=1, calculate=["finger_width",
     if (body_tie == "top") :
         layer = tech.getLayerNum("Activ", "drawing")
         xa0 = int(- gate_offset + gate_to_activ)
-        ya0 = int(width + activ_ex_offset + activ_space)
+        ya0 = int(width + psd_to_gate + psd_to_ntap)
         xa1 = int(n_fingers * (length + gate_offset) - gate_to_activ)
         if (width >= (2 * activ_en_cont + cont_width)) :
             xa0 = int(-(cont_activ_to_gatpoly + cont_width + activ_en_cont))
-            ya0 = int(width + gatepoly_ex_activ + gate_to_activ)
             xa1 = int(n_fingers * (length + gate_offset) - cont_activ_to_gatpoly + activ_en_cont)
         ya1 = int(ya0 + 2 * activ_en_cont + cont_width)
         r = Rect(xa0, ya0, xa1, ya1)

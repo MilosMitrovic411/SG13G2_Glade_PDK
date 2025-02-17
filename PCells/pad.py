@@ -18,7 +18,7 @@ def pad(cv, w=30e-6) :
     #
     # Device rules
     #
-    min_width = int(30 * dbu)
+    min_width = int(2.1 * dbu)
     max_width = int(150 * dbu)
     #
     # Checking parameters
@@ -48,9 +48,6 @@ def pad(cv, w=30e-6) :
     layer = tech.getLayerNum("Passiv", "pillar")
     r = Rect(0, 0, width, width)
     passiv_pillar = cv.dbCreateRect(r, layer)
-    layer = tech.getLayerNum("dfpad", "drawing")
-    r = Rect(0, 0, width, width)
-    dfpad = cv.dbCreateRect(r, layer)
     layer = tech.getLayerNum("TopMetal2", "drawing")
     xp0 = int(-topmetal2_en_passiv)
     yp0 = int(-topmetal2_en_passiv)
@@ -58,6 +55,9 @@ def pad(cv, w=30e-6) :
     yp1 = int(width + topmetal2_en_passiv)
     r = Rect(xp0, yp0, xp1, yp1)
     topmetal2 = cv.dbCreateRect(r, layer)
+    layer = tech.getLayerNum("dfpad", "drawing")
+    r = Rect(xp0, yp0, xp1, yp1)
+    dfpad = cv.dbCreateRect(r, layer)
     #
     # Save results
     #

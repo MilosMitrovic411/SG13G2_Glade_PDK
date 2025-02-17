@@ -10,11 +10,11 @@ def cupillarpad(cv, size = ["35", "40", "45"]) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    radius = int(35 * dbu)
+    radius = int(17.5 * dbu)
     if (size == "40") :
-        radius = int(40 * dbu)
+        radius = int(20 * dbu)
     if (size == "45") :
-        radius = int(45 * dbu)
+        radius = int(22.5 * dbu)
     #
     # Layer rules
     #
@@ -27,9 +27,6 @@ def cupillarpad(cv, size = ["35", "40", "45"]) :
     layer = tech.getLayerNum("Passiv", "pillar")
     p = Point(0, 0)
     passiv = cv.dbCreateCircle(p, radius, layer)
-    layer = tech.getLayerNum("dfpad", "drawing")
-    p = Point(0, 0)
-    dfpad = cv.dbCreateCircle(p, radius, layer)
     layer = tech.getLayerNum("TopMetal2", "drawing")
     c = int((radius + topmetal2_en_passiv) / math.sin(1.178097))
     a = int(c * math.cos(1.178097))
@@ -55,6 +52,8 @@ def cupillarpad(cv, size = ["35", "40", "45"]) :
     xmpp[8] = xmpp[0]
     ympp[8] = ympp[0]
     topmetal2 = cv.dbCreatePolygon(xmpp, ympp, 9, layer)
+    layer = tech.getLayerNum("dfpad", "drawing")
+    dfpad = cv.dbCreatePolygon(xmpp, ympp, 9, layer)
     #
     # Save results
     #

@@ -103,7 +103,7 @@ def isolbox(cv, w=4e-6, l=4e-6) :
     pin = cv.dbCreatePin("Iso", net, DB_PIN_INOUT)
     cv.dbCreatePort(pin, nring)
     # Create PWell block
-    p_layer = tech.getLayerNum("PWell", "boundary")
+    p_layer = tech.getLayerNum("PWell", "block")
     xmpp = intarray(5)
     ympp = intarray(5)
     xmpp[0] = int(xnbl0 - pwellblock_width / 2)

@@ -10,7 +10,7 @@ def sbumppad(cv) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    radius = int(30 * dbu)
+    radius = int(15 * dbu)
     #
     # Layer rules
     #
@@ -23,9 +23,6 @@ def sbumppad(cv) :
     layer = tech.getLayerNum("Passiv", "sbump")
     p = Point(0, 0)
     passiv_sbump = cv.dbCreateCircle(p, radius, layer)
-    layer = tech.getLayerNum("dfpad", "drawing")
-    p = Point(0, 0)
-    dfpad = cv.dbCreateCircle(p, radius, layer)
     layer = tech.getLayerNum("TopMetal2", "drawing")
     c = int((radius + topmetal2_en_passiv) / math.sin(1.178097))
     a = int(c * math.cos(1.178097))
@@ -51,6 +48,8 @@ def sbumppad(cv) :
     xmpp[8] = xmpp[0]
     ympp[8] = ympp[0]
     topmetal2 = cv.dbCreatePolygon(xmpp, ympp, 9, layer)
+    layer = tech.getLayerNum("dfpad", "drawing")
+    dfpad = cv.dbCreatePolygon(xmpp, ympp, 9, layer)
     #
     # Save results
     #

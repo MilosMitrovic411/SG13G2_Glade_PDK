@@ -123,7 +123,7 @@ geomConnect( [
         [via2, metal2, metal3],
         [via3, metal3, metal4],
         [via4, metal4, metal5],
-        [topvia1, metal5, topmetal1],
+        [topvia1, metal5, mim, topmetal1],
         [topvia2, topmetal1, topmetal2],
         ] )
 #

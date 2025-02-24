@@ -228,8 +228,10 @@ if geomNumShapes(nbl) > 0 :
     geomSpace(nbl, geomTouching(nbl, pwell_block), 3.20, diffnet, "NBL.c: Min. PWell width between nBuLay regions (different net) (Note 1) < 3.20um")
     geomSpace(nbl, nwell, 2.20, diffnet, "NBL.d: Min. PWell width between nBuLay and NWell (different net) < 2.20um")
     geomSpace(nbl, geomTouching(nwell, pwell_block), 2.20, diffnet, "NBL.d: Min. PWell width between nBuLay and NWell (different net) < 2.20um")
-    geomSpace(nbl, geomInside(pwell, nactiv), 1.00, "NBL.e: Min. nBuLay space to unrelated N+Activ < 1.00um")
-    geomSpace(nbl, geomInside(pwell, pactiv), 0.50, "NBL.f: Min. nBuLay space to unrelated P+Activ < 0.50um")
+    #geomSpace(nbl, geomInside(pwell, nactiv), 1.00, "NBL.e: Min. nBuLay space to unrelated N+Activ < 1.00um")
+    #geomSpace(nbl, geomInside(pwell, pactiv), 0.50, "NBL.f: Min. nBuLay space to unrelated P+Activ < 0.50um")
+    geomSpace(nbl, nactiv, 1.00, "NBL.e: nBuLay space to unrelated N+Activ < 1.00um")
+    geomSpace(nbl, pactiv, 0.50, "NBL.f: nBuLay space to unrelated P+Activ < 0.50um")
 #
 if geomNumShapes(nbulay_block) > 0 :
     print("Checking nBuLay:block rules:")
@@ -817,10 +819,10 @@ if geomNumShapes(pin) > 0 :
     saveDerived(geomAndNot(activ_pin, activ), "Pin.a: Min. Activ enclosure of Activ:pin != 0.00")
     saveDerived(geomAndNot(gatpoly_pin, gatpoly_pin), "Pin.b: Min. GatPoly enclosure of GatPoly:pin != 0.00")
     saveDerived(geomAndNot(metal1_pin, metal1), "Pin.e: Min. Metal1 enclosure of Metal1:pin != 0.00")
-    saveDerived(geomAndNot(metal1_pin, metal2), "Pin.f: Min. Metal2 enclosure of Metal2:pin != 0.00")
-    saveDerived(geomAndNot(metal1_pin, metal3), "Pin.f: Min. Metal3 enclosure of Metal3:pin != 0.00")
-    saveDerived(geomAndNot(metal1_pin, metal4), "Pin.f: Min. Metal4 enclosure of Metal4:pin != 0.00")
-    saveDerived(geomAndNot(metal1_pin, metal5), "Pin.f: Min. Metal5 enclosure of Metal5:pin != 0.00")
+    saveDerived(geomAndNot(metal2_pin, metal2), "Pin.f: Min. Metal2 enclosure of Metal2:pin != 0.00")
+    saveDerived(geomAndNot(metal3_pin, metal3), "Pin.f: Min. Metal3 enclosure of Metal3:pin != 0.00")
+    saveDerived(geomAndNot(metal4_pin, metal4), "Pin.f: Min. Metal4 enclosure of Metal4:pin != 0.00")
+    saveDerived(geomAndNot(metal5_pin, metal5), "Pin.f: Min. Metal5 enclosure of Metal5:pin != 0.00")
     saveDerived(geomAndNot(topmetal1_pin, topmetal1), "Pin.g: Min. TopMetal1 enclosure of TopMetal1:pin != 0.00")
     saveDerived(geomAndNot(topmetal2_pin, topmetal2), "Pin.h: TopMetal2 enclosure of TopMetal2:pin != 0.00")
 #

@@ -19,3 +19,7 @@ Version 1.2.0
  	LPE (LVS) script file added.
 
   	Extraction PCells added.
+
+Version 1.3.0
+
+ 	PEX script file added.

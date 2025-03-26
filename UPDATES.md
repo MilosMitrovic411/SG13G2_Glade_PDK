@@ -23,3 +23,7 @@ Version 1.2.0
 Version 1.3.0
 
  	PEX script file added.
+  
+Version 1.3.1
+
+ 	XyceSimLib library has been added.

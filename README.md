@@ -1,8 +1,10 @@
 # SG13G2_Glade_PDK
 THIS PDK CONTAINS FILES MENT TO ENABLE SG13G2 TECHNOLOGY DESIGN IN GLADE.\
-THE IHP'S OFFICAL PAGE FOR THE TECHNOLOGY AND GLADE HOME PAGES ARE LINKED BELLOW:\
-https://www.ihp-microelectronics.com/services/research-and-prototyping-service/fast-design-enablement/open-source-pdk\
-https://peardrop.co.uk/
+THE IHP'S OFFICAL PAGE FOR THE TECHNOLOGY AND GLADE HOME PAGES ARE LINKED BELLOW:
+
+https://www.ihp-microelectronics.com/services/research-and-prototyping-service/fast-design-enablement/open-source-pdk
+
+https://peardrop.co.uk
 
 MAKE SURE TO DOWNLOAD THE LATEST VERSION OF GLADE BUILD, OTHERWISE SOME FEATURES WONT BE FUNCTIONAL.
 

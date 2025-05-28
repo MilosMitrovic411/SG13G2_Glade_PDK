@@ -27,3 +27,8 @@ Version 1.3.0
 Version 1.3.1
 
  	XyceSimLib library has been added.
+
+Version 1.4.1
+
+ 	Added ESD protection components and SVaricap and updated via PCell to enable multi-stack vias.
+

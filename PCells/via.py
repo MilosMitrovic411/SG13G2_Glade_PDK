@@ -5,12 +5,12 @@ from ui import *
 #
 # The entry point
 #
-def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["m1m2","am1", "pm1", "m2m3", "m3m4", "m4m5", "m5tm1", "tm1tm2"]) :
+def via(cv, Columns=2, Rows=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], Bottom=["Activ", "GatPoly", "Metal1", "Metal2", "Metal3", "Metal4", "Metal5", "TopMetal1"], Top=["Metal1", "Metal2", "Metal3", "Metal4", "Metal5", "TopMetal1", "TopMetal2"]) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    nx = int(x)
-    ny = int(y)
+    nx = int(Columns)
+    ny = int(Rows)
     width = max(int(w * 1e6 * dbu), int(w * 1e9))
     length = max(int(l * 1e6 * dbu), int(l * 1e9))
     #
@@ -42,10 +42,12 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
         width = int(xygrid * int(width / xygrid))
         cv.dbReplaceProp("w", 1e-6 * (width / dbu))
         cv.update()
+    #
     if length%xygrid!=0 :
         length = int(xygrid * int(length / xygrid))
         cv.dbReplaceProp("l", 1e-6 * (length / dbu))
         cv.update()
+    #
     if (selection_type == "x&y") :
         if (nx < 1) :
             nx = 1
@@ -53,6 +55,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
         if (ny < 1) :
             ny = 1
             cv.dbReplaceProp("y", ny)
+    #
     if (selection_type == "w&l") :
         if ((via == "am1") or (via == "pm1")) :
             if (width < int(2 * activ_en_cont + cont_width)) :
@@ -94,12 +97,12 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
     # Creating the device
     #
     if (selection_type == "x&y") :
-        nx = int(x)
-        ny = int(y)
-        if (via == "am1") :
+        nx = int(Columns)
+        ny = int(Rows)
+        if ((Bottom == "Activ") and ((Top == "Metal1") or (Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Cont", "drawing")
             space = int(cont_space)
-            if ((nx > 4) and (ny > 4)) :
+            if ((nx > 4) or (ny > 4)) :
                 space = int(cont_space_matrix)
             for n in range(nx) :
                 for m in range(ny) :
@@ -125,10 +128,14 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             metal1 = cv.dbCreateRect(r, layer)
             width = int(ya1 - ya0)
             length = int(xa1 - xa0)
-        if (via == "pm1") :
+            #
+            if ((Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in contact and via size and spacing rules.")
+        #
+        if ((Bottom == "GatPoly") and ((Top == "Metal1") or (Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Cont", "drawing")
             space = int(cont_space)
-            if ((nx > 4) and (ny > 4)) :
+            if ((nx > 4) or (ny > 4)) :
                 space = int(cont_space_matrix)
             for n in range(nx) :
                 for m in range(ny) :
@@ -154,10 +161,14 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             metal1 = cv.dbCreateRect(r, layer)
             width = int(yp1 - yp0)
             length = int(xp1 - xp0)
-        if (via == "m1m2") :
+            #
+            if ((Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in contact and via size and spacing rules.")
+        #
+        if ((Bottom == "Metal1") and ((Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Via1", "drawing")
             space = int(via_space)
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
             for n in range(nx) :
                 for m in range(ny) :
@@ -178,10 +189,77 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             metal2 = cv.dbCreateRect(r, layer)
             width = int(ym1 - ym0)
             length = int(xm1 - xm0)
-        if (via == "m2m3") :
+            #
+            if ((Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Via2", "drawing")
+                space = int(via_space)
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(n*(via_width + space))
+                        yv0 = int(m*(via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via1 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal3", "drawing")
+                xm0 = int(-metal_en_via)
+                ym0 = int(-metal_en_via)
+                xm1 = int(nx * (via_width + space) - space + metal_en_via)
+                ym1 = int(ny * (via_width + space) - space + metal_en_via)
+                r = Rect(xm0, ym0, xm1, ym1)
+                metal3 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Via3", "drawing")
+                space = int(via_space)
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(n*(via_width + space))
+                        yv0 = int(m*(via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via1 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal4", "drawing")
+                xm0 = int(-metal_en_via)
+                ym0 = int(-metal_en_via)
+                xm1 = int(nx * (via_width + space) - space + metal_en_via)
+                ym1 = int(ny * (via_width + space) - space + metal_en_via)
+                r = Rect(xm0, ym0, xm1, ym1)
+                metal4 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Via4", "drawing")
+                space = int(via_space)
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(n*(via_width + space))
+                        yv0 = int(m*(via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via1 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal5", "drawing")
+                xm0 = int(-metal_en_via)
+                ym0 = int(-metal_en_via)
+                xm1 = int(nx * (via_width + space) - space + metal_en_via)
+                ym1 = int(ny * (via_width + space) - space + metal_en_via)
+                r = Rect(xm0, ym0, xm1, ym1)
+                metal5 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal2") and ((Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Via2", "drawing")
             space = int(via_space)
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
             for n in range(nx) :
                 for m in range(ny) :
@@ -202,10 +280,56 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             metal3 = cv.dbCreateRect(r, layer)
             width = int(ym1 - ym0)
             length = int(xm1 - xm0)
-        if (via == "m3m4") :
+            #
+            if ((Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Via3", "drawing")
+                space = int(via_space)
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(n*(via_width + space))
+                        yv0 = int(m*(via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via1 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal4", "drawing")
+                xm0 = int(-metal_en_via)
+                ym0 = int(-metal_en_via)
+                xm1 = int(nx * (via_width + space) - space + metal_en_via)
+                ym1 = int(ny * (via_width + space) - space + metal_en_via)
+                r = Rect(xm0, ym0, xm1, ym1)
+                metal4 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Via4", "drawing")
+                space = int(via_space)
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(n*(via_width + space))
+                        yv0 = int(m*(via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via1 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal5", "drawing")
+                xm0 = int(-metal_en_via)
+                ym0 = int(-metal_en_via)
+                xm1 = int(nx * (via_width + space) - space + metal_en_via)
+                ym1 = int(ny * (via_width + space) - space + metal_en_via)
+                r = Rect(xm0, ym0, xm1, ym1)
+                metal5 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal3") and ((Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Via3", "drawing")
             space = int(via_space)
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
             for n in range(nx) :
                 for m in range(ny) :
@@ -226,10 +350,35 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             metal4 = cv.dbCreateRect(r, layer)
             width = int(ym1 - ym0)
             length = int(xm1 - xm0)
-        if (via == "m4m5") :
+            #
+            if ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Via4", "drawing")
+                space = int(via_space)
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(n*(via_width + space))
+                        yv0 = int(m*(via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via1 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal5", "drawing")
+                xm0 = int(-metal_en_via)
+                ym0 = int(-metal_en_via)
+                xm1 = int(nx * (via_width + space) - space + metal_en_via)
+                ym1 = int(ny * (via_width + space) - space + metal_en_via)
+                r = Rect(xm0, ym0, xm1, ym1)
+                metal5 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal4") and ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Via4", "drawing")
             space = int(via_space)
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
             for n in range(nx) :
                 for m in range(ny) :
@@ -250,7 +399,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             metal5 = cv.dbCreateRect(r, layer)
             width = int(ym1 - ym0)
             length = int(xm1 - xm0)
-        if (via == "m5tm1") :
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal5") and ((Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("TopVia1", "drawing")
             for n in range(nx) :
                 for m in range(ny) :
@@ -276,7 +429,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             topmetal1 = cv.dbCreateRect(r, layer)
             width = int(ytm11 - ytm10)
             length = int(xtm11 - xtm10)
-        if (via == "tm1tm2") :
+            #
+            if (Top == "TopMetal2") :
+                print("This multi-stack is not supported due to difference in topvia1 and topvia2 size and spacing rules.")
+        #
+        if ((Bottom == "TopMetal1") and (Top == "TopMetal2")) :
             layer = tech.getLayerNum("TopVia2", "drawing")
             for n in range(nx) :
                 for m in range(ny) :
@@ -299,10 +456,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             length = int(xtm1 - xtm0)
         cv.dbReplaceProp("w", 1e-6 * (width / dbu))
         cv.dbReplaceProp("l", 1e-6 * (length / dbu))
+    #
     if (selection_type == "w&l") :
         width = int(w * 1.0e6 * dbu)
         length = int(l * 1.0e6 * dbu)
-        if (via == "am1") :
+        if ((Bottom == "Activ") and ((Top == "Metal1") or (Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Activ", "drawing")
             xa0 = 0
             ya0 = 0
@@ -321,7 +479,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             space = int(cont_space)
             nx = int((length - 2 * activ_en_cont + space) / (cont_width + space))
             ny = int((width - 2 * activ_en_cont + space) / (cont_width + space))
-            if ((nx > 4) and (ny > 4)) :
+            if ((nx > 4) or (ny > 4)) :
                 space = int(cont_space_matrix)
                 nx = int((length - 2 * activ_en_cont + space) / (cont_width + space))
                 ny = int((width - 2 * activ_en_cont + space) / (cont_width + space))
@@ -339,7 +497,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     yc1 = int(yc0 + cont_width)
                     r = Rect(xc0, yc0, xc1, yc1)
                     cont = cv.dbCreateRect(r, layer)
-        if (via == "pm1") :
+            #
+            if ((Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in contact and via size and spacing rules.")
+        #
+        if ((Bottom == "GatPoly") and ((Top == "Metal1") or (Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("GatPoly", "drawing")
             xp0 = 0
             yp0 = 0
@@ -358,7 +520,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             space = int(cont_space)
             nx = int((length - 2 * gatepoly_en_cont + space) / (cont_width + space))
             ny = int((width - 2 * gatepoly_en_cont + space) / (cont_width + space))
-            if ((nx > 4) and (ny > 4)) :
+            if ((nx > 4) or (ny > 4)) :
                 space = int(cont_space_matrix)
                 nx = int((length - 2 * gatepoly_en_cont + space) / (cont_width + space))
                 ny = int((width - 2 * gatepoly_en_cont + space) / (cont_width + space))
@@ -376,7 +538,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     yc1 = int(yc0 + cont_width)
                     r = Rect(xc0, yc0, xc1, yc1)
                     cont = cv.dbCreateRect(r, layer)
-        if (via == "m1m2") :
+            #
+            if ((Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in contact and via size and spacing rules.")
+        #
+        if ((Bottom == "Metal1") and ((Top == "Metal2") or (Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Metal1", "drawing")
             r = Rect(0, 0, length, width)
             metal1 = cv.dbCreateRect(r, layer)
@@ -386,7 +552,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             space = int(via_space)
             nx = int((length - 2 * metal_en_via + space) / (via_width + space))
             ny = int((width - 2 * metal_en_via + space) / (via_width + space))
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
                 nx = int((length - 2 * metal_en_via + space) / (via_width + space))
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
@@ -404,7 +570,98 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     yv1 = int(yv0 + via_width)
                     r = Rect(xv0, yv0, xv1, yv1)
                     via1 = cv.dbCreateRect(r, layer)
-        if (via == "m2m3") :
+            #
+            if ((Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Metal2", "drawing")
+                r = Rect(0, 0, length, width)
+                metal2 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal3", "drawing")
+                metal3 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Via2", "drawing")
+                space = int(via_space)
+                nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                    nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                    ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                x_offset = int((length - (nx * (via_width + space) - space)) / 2)
+                y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+                if x_offset%xygrid!=0 :
+                    x_offset = int(xygrid * int(x_offset / xygrid))
+                if y_offset%xygrid!=0 :
+                    y_offset = int(xygrid * int(y_offset / xygrid))
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(x_offset + n * (via_width + space))
+                        yv0 = int(y_offset + m * (via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via2 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Metal3", "drawing")
+                r = Rect(0, 0, length, width)
+                metal3 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal4", "drawing")
+                metal4 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Via3", "drawing")
+                space = int(via_space)
+                nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                    nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                    ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                x_offset = int((length - (nx * (via_width + space) - space)) / 2)
+                y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+                if x_offset%xygrid!=0 :
+                    x_offset = int(xygrid * int(x_offset / xygrid))
+                if y_offset%xygrid!=0 :
+                    y_offset = int(xygrid * int(y_offset / xygrid))
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(x_offset + n * (via_width + space))
+                        yv0 = int(y_offset + m * (via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via3 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Metal4", "drawing")
+                r = Rect(0, 0, length, width)
+                metal4 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal5", "drawing")
+                metal5 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Via4", "drawing")
+                space = int(via_space)
+                nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                    nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                    ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                x_offset = int((length - (nx * (via_width + space) - space)) / 2)
+                y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+                if x_offset%xygrid!=0 :
+                    x_offset = int(xygrid * int(x_offset / xygrid))
+                if y_offset%xygrid!=0 :
+                    y_offset = int(xygrid * int(y_offset / xygrid))
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(x_offset + n * (via_width + space))
+                        yv0 = int(y_offset + m * (via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via4 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal2") and ((Top == "Metal3") or (Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Metal2", "drawing")
             r = Rect(0, 0, length, width)
             metal2 = cv.dbCreateRect(r, layer)
@@ -414,7 +671,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             space = int(via_space)
             nx = int((length - 2 * metal_en_via + space) / (via_width + space))
             ny = int((width - 2 * metal_en_via + space) / (via_width + space))
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
                 nx = int((length - 2 * metal_en_via + space) / (via_width + space))
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
@@ -432,7 +689,69 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     yv1 = int(yv0 + via_width)
                     r = Rect(xv0, yv0, xv1, yv1)
                     via2 = cv.dbCreateRect(r, layer)
-        if (via == "m3m4") :
+            #
+            if ((Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Metal3", "drawing")
+                r = Rect(0, 0, length, width)
+                metal3 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal4", "drawing")
+                metal4 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Via3", "drawing")
+                space = int(via_space)
+                nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                    nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                    ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                x_offset = int((length - (nx * (via_width + space) - space)) / 2)
+                y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+                if x_offset%xygrid!=0 :
+                    x_offset = int(xygrid * int(x_offset / xygrid))
+                if y_offset%xygrid!=0 :
+                    y_offset = int(xygrid * int(y_offset / xygrid))
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(x_offset + n * (via_width + space))
+                        yv0 = int(y_offset + m * (via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via3 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Metal4", "drawing")
+                r = Rect(0, 0, length, width)
+                metal4 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal5", "drawing")
+                metal5 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Via4", "drawing")
+                space = int(via_space)
+                nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                    nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                    ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                x_offset = int((length - (nx * (via_width + space) - space)) / 2)
+                y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+                if x_offset%xygrid!=0 :
+                    x_offset = int(xygrid * int(x_offset / xygrid))
+                if y_offset%xygrid!=0 :
+                    y_offset = int(xygrid * int(y_offset / xygrid))
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(x_offset + n * (via_width + space))
+                        yv0 = int(y_offset + m * (via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via4 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal3") and ((Top == "Metal4") or (Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Metal3", "drawing")
             r = Rect(0, 0, length, width)
             metal3 = cv.dbCreateRect(r, layer)
@@ -442,7 +761,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             space = int(via_space)
             nx = int((length - 2 * metal_en_via + space) / (via_width + space))
             ny = int((width - 2 * metal_en_via + space) / (via_width + space))
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
                 nx = int((length - 2 * metal_en_via + space) / (via_width + space))
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
@@ -460,7 +779,40 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     yv1 = int(yv0 + via_width)
                     r = Rect(xv0, yv0, xv1, yv1)
                     via3 = cv.dbCreateRect(r, layer)
-        if (via == "m4m5") :
+            #
+            if ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2")) :
+                layer = tech.getLayerNum("Metal4", "drawing")
+                r = Rect(0, 0, length, width)
+                metal4 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Metal5", "drawing")
+                metal5 = cv.dbCreateRect(r, layer)
+                layer = tech.getLayerNum("Via4", "drawing")
+                space = int(via_space)
+                nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                if ((nx > 3) or (ny > 3)) :
+                    space = int(via_space_matrix)
+                    nx = int((length - 2 * metal_en_via + space) / (via_width + space))
+                    ny = int((width - 2 * metal_en_via + space) / (via_width + space))
+                x_offset = int((length - (nx * (via_width + space) - space)) / 2)
+                y_offset = int((width - (ny * (via_width + space) - space)) / 2)
+                if x_offset%xygrid!=0 :
+                    x_offset = int(xygrid * int(x_offset / xygrid))
+                if y_offset%xygrid!=0 :
+                    y_offset = int(xygrid * int(y_offset / xygrid))
+                for n in range(nx) :
+                    for m in range(ny) :
+                        xv0 = int(x_offset + n * (via_width + space))
+                        yv0 = int(y_offset + m * (via_width + space))
+                        xv1 = int(xv0 + via_width)
+                        yv1 = int(yv0 + via_width)
+                        r = Rect(xv0, yv0, xv1, yv1)
+                        via4 = cv.dbCreateRect(r, layer)
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal4") and ((Top == "Metal5") or (Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("Metal4", "drawing")
             r = Rect(0, 0, length, width)
             metal4 = cv.dbCreateRect(r, layer)
@@ -470,7 +822,7 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
             space = int(via_space)
             nx = int((length - 2 * metal_en_via + space) / (via_width + space))
             ny = int((width - 2 * metal_en_via + space) / (via_width + space))
-            if ((nx > 3) and (ny > 3)) :
+            if ((nx > 3) or (ny > 3)) :
                 space = int(via_space_matrix)
                 nx = int((length - 2 * metal_en_via + space) / (via_width + space))
                 ny = int((width - 2 * metal_en_via + space) / (via_width + space))
@@ -488,7 +840,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     yv1 = int(yv0 + via_width)
                     r = Rect(xv0, yv0, xv1, yv1)
                     via4 = cv.dbCreateRect(r, layer)
-        if (via == "m5tm1") :
+            #
+            if ((Top == "TopMetal1") or (Top == "TopMetal2")) :
+                print("This multi-stack is not supported due to difference in via and topvia size and spacing rules.")
+        #
+        if ((Bottom == "Metal5") and ((Top == "TopMetal1") or (Top == "TopMetal2"))) :
             layer = tech.getLayerNum("TopMetal1", "drawing")
             r = Rect(0, 0, length, width)
             topmetal1 = cv.dbCreateRect(r, layer)
@@ -516,7 +872,11 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     ytv11 = int(ytv10 + tvia1_width)
                     r = Rect(xtv10, ytv10, xtv11, ytv11)
                     topvia1 = cv.dbCreateRect(r, layer)
-        if (via == "tm1tm2") :
+            #
+            if (Top == "TopMetal2") :
+                print("This multi-stack is not supported due to difference in topvia1 and topvia2 size and spacing rules.")
+        #
+        if ((Bottom == "TopMetal1") and (Top == "TopMetal2")) :
             layer = tech.getLayerNum("TopMetal1", "drawing")
             r = Rect(0, 0, length, width)
             topmetal1 = cv.dbCreateRect(r, layer)
@@ -539,8 +899,8 @@ def via(cv, x=2, y=1, w=0.29e-6, l=0.7e-6, selection_type=["x&y", "w&l"], via=["
                     ytv11 = int(ytv10 + tvia2_width)
                     r = Rect(xtv10, ytv10, xtv11, ytv11)
                     topvia1 = cv.dbCreateRect(r, layer)
-        cv.dbReplaceProp("x", nx)
-        cv.dbReplaceProp("y", ny)
+        cv.dbReplaceProp("Columns", nx)
+        cv.dbReplaceProp("Rows", ny)
     #
     # Save results
     #

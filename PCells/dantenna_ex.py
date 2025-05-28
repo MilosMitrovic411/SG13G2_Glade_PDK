@@ -1,9 +1,6 @@
-#---------------------------------------------------------------
-# CNM25 PiP Capacitor PCell for extraction
-#---------------------------------------------------------------
-
+#
 from ui import *
-
+#
 def dantenna_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	lib = cv.lib()
 	dbu = float(lib.dbuPerUU())
@@ -39,8 +36,8 @@ def dantenna_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	w = float(area/l)
 
 	# Update the master pcell property.
-	cv.dbAddProp("w", w*1e-6)
-	cv.dbAddProp("l", l*1e-6)
+	cv.dbAddProp("Width", w*1e-6)
+	cv.dbAddProp("Length", l*1e-6)
 
 	# Create the recognition region shape
 	xpts = intarray(npts)
@@ -60,11 +57,11 @@ def dantenna_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	cv.dbAddProp("type", "dio")
 
 	# Set the device modelName property for netlisting
-	cv.dbAddProp("modelName", "dantenna")
+	cv.dbAddProp("model", "dantenna")
 
 	# Set the NLP property for netlisting
-	cv.dbAddProp("NLPDeviceFormat", "[@instName] [|A:%] [|C:%] [@modelName] [@w:w=%u] [@l:l=%u] [@m:m=%:m=1]")
-	cv.dbAddProp("NLPDeviceFormatCDL", "x[@instName] [|A:%] [|C:%] [@modelName] [@w:w=%u] [@l:l=%u] [@m:m=%:m=1]")
+	cv.dbAddProp("NLPDeviceFormat", "[@instName] [|A:%] [|C:%] [@model] [@Width:w=%u] [@Length:l=%u] [@m:m=%:m=1]")
+	cv.dbAddProp("NLPDeviceFormatCDL", "x[@instName] [|A:%] [|C:%] [@model] [@Width:w=%u] [@Length:l=%u] [@m:m=%:m=1]")
 
 	# Update the bounding box
 	cv.update()

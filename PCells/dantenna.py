@@ -5,74 +5,91 @@ from ui import *
 #
 # The entry point
 #
-def dantenna(cv) :
+def dantenna(cv, Width=0.78e-6, Length=0.78e-6, type="dio", model="dantenna" ) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
+    w = max(int(Width * 1e6 * dbu), int(Width * 1e9))
+    l = max(int(Length * 1e6 * dbu), int(Length * 1e9))
     #
     # Layer rules
     #
     xygrid = int(0.005 * dbu)
-    activ_en_cont = int(0.14 * dbu)
+    activ_en_cont = int(0.07 * dbu)
     cont_width = int(0.16 * dbu)
     cont_space = int(0.18 * dbu)
-    extblock_en_gatpoly = int(0.18 * dbu)
+    cont_matrix_space = int(0.2 * dbu)
+    extblock_en_activ = int(0.02 * dbu)
     metal1_en_cont = int(0.0 * dbu)
+    #
+    # Checking parameters
+    #
+    if (w < int(0.78 * dbu)) :
+        w = int(0.78 * dbu)
+        cv.dbReplaceProp("Width", 1e-6 * (w / dbu))
+        cv.update()
+    if (l < int(0.78 * dbu)) :
+        l = int(0.78 * dbu)
+        cv.dbReplaceProp("Length", 1e-6 * (l / dbu))
+        cv.update()
+    if w%xygrid!=0 :
+        w = int(xygrid * int(w / xygrid))
+        cv.dbReplaceProp("Width", 1e-6 * (w / dbu))
+        cv.update()
+    if l%xygrid!=0 :
+        l = int(xygrid * int(l / xygrid))
+        cv.dbReplaceProp("Length", 1e-6 * (l / dbu))
+        cv.update()
     #
     # Creating the device
     #
-    # Create contacts
-    layer = tech.getLayerNum("Cont", "drawing")
-    xc01 = 0
-    yc01 = 0
-    xc11 = int(cont_width)
-    yc11 = int(cont_width)
-    r = Rect(xc01, yc01, xc11, yc11)
-    cont = cv.dbCreateRect(r, layer)
-    xc02 = int(cont_width + cont_space)
-    yc02 = 0
-    xc12 = int(xc02 + cont_width)
-    yc12 = int(cont_width)
-    r = Rect(xc02, yc02, xc12, yc12)
-    cont = cv.dbCreateRect(r, layer)
-    xc03 = 0
-    yc03 = int(cont_width + cont_space)
-    xc13 = int(cont_width)
-    yc13 = int(yc03 + cont_width)
-    r = Rect(xc03, yc03, xc13, yc13)
-    cont = cv.dbCreateRect(r, layer)
-    xc04 = int(cont_width + cont_space)
-    yc04 = int(cont_width + cont_space)
-    xc14 = int(xc04 + cont_width)
-    yc14 = int(yc04 + cont_width)
-    r = Rect(xc04, yc04, xc14, yc14)
-    cont = cv.dbCreateRect(r, layer)
+    cont_layer = tech.getLayerNum("Cont", "drawing")
+    activ_layer = tech.getLayerNum("Activ", "drawing")
+    extblock_layer = tech.getLayerNum("EXTBlock", "drawing")
+    metal_layer = tech.getLayerNum("Metal1", "drawing")
+    text_layer = tech.getLayerNum("TEXT", "drawing")
     # Create activ
-    layer = tech.getLayerNum("Activ", "drawing")
-    xa0 = int(-activ_en_cont)
-    ya0 = int(-activ_en_cont)
-    xa1 = int(xc14 + activ_en_cont)
-    ya1 = int(yc14 + activ_en_cont)
+    xa0 = 0
+    ya0 = 0
+    xa1 = l
+    ya1 = w
     r = Rect(xa0, ya0, xa1, ya1)
-    activ = cv.dbCreateRect(r, layer)
-    layer = tech.getLayerNum("EXTBlock", "drawing")
-    extblock = cv.dbCreateRect(r, layer)
+    activ = cv.dbCreateRect(r, activ_layer)
+    #
+    xe0 = int(-extblock_en_activ)
+    ye0 = int(-extblock_en_activ)
+    xe1 = int(l + extblock_en_activ)
+    ye1 = int(w + extblock_en_activ)
+    r = Rect(xe0, ye0, xe1, ye1)
+    extblock = cv.dbCreateRect(r, extblock_layer)
+    # Create contacts
+    space = cont_space
+    n_contx = int((l - 2 * activ_en_cont + space) / (cont_width + space))
+    n_conty = int((w- 2 * activ_en_cont + space) / (cont_width + space))
+    if ((n_contx > 3) or (n_conty > 3)) :
+        space = cont_matrix_space
+        n_contx = int((l - 2 * activ_en_cont + space) / (cont_width + space))
+        n_conty = int((w- 2 * activ_en_cont + space) / (cont_width + space))
+    xoffset = int((l - n_contx * (cont_width + space) + space) / 2)
+    yoffset = int((w - n_conty * (cont_width + space) + space) / 2)
+    for n in range (n_contx) :
+        for m in range(n_conty) :
+            xc0 = int(xoffset + n * (cont_width + space))
+            yc0 = int(yoffset + m * (cont_width + space))
+            xc1 = int(xc0 + cont_width)
+            yc1 = int(yc0 + cont_width)
+            r = Rect(xc0, yc0, xc1, yc1)
+            cont = cv.dbCreateRect(r, cont_layer)
     # Create metalization
-    layer = tech.getLayerNum("Metal1", "drawing")
-    # xm0 = int(-metal1_en_cont)
-    # ym0 = int(-metal1_en_cont)
-    # xm1 = int(xc14 + metal1_en_cont)
-    # ym1 = int(yc14 + metal1_en_cont)
-    xm0 = 0
-    ym0 = 0
-    xm1 = xc14
-    ym1 = yc14
+    xm0 = int(xoffset)
+    ym0 = int(yoffset)
+    xm1 = int(l - xoffset)
+    ym1 = int(w - yoffset)
     r = Rect(xm0, ym0, xm1, ym1)
-    metal1 = cv.dbCreateRect(r, layer)
-    #
-    # Add device type
-    #
-    cv.dbAddProp("type", "dio")
+    metal = cv.dbCreateRect(r, metal_layer)
+    # Create label
+    p = Point(int(l / 2), int(w / 2))
+    text = cv.dbCreateLabel(p, "dant", R0, 0.2,  centreCentre, text_layer)    
     #
     # Save results
     #

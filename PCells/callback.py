@@ -5,8 +5,8 @@ def callback(pyDBObject) :
     xygrid = int(0.005 * dbu)
     inst = pyDBObject.toInst()
     cell_name = pyDBObject.cellName()
-    if (cell_name.find("mim") >= 0) :
-        name = "mim"
+    if (cell_name.find("cmim") >= 0) :
+        name = "cmim"
     if (cell_name.find("rsil") >= 0) :
         name = "rsil"
     if (cell_name.find("rppd") >= 0) :
@@ -23,10 +23,29 @@ def callback(pyDBObject) :
         name = "pad"
     if (cell_name.find("seal") >= 0) :
         name = "sealring"
+    if (cell_name.find("npn13G2") >= 0) :
+        name = "npn13G2"
+    if (cell_name.find("SVaricap") >= 0) :
+        name = "SVaricap"
+    if (cell_name.find("nmoscl_2") >= 0) :
+        name = "nmoscl_2"
+    if (cell_name.find("nmoscl_4") >= 0) :
+        name = "nmoscl_4"
+    if (cell_name.find("dantenna") >= 0) :
+        name = "dantenna"
+    if (cell_name.find("dpantenna") >= 0) :
+        name = "dpantenna"
     print()
-    print("The device model is: ", end="")
+    print("Selected device is: ", end="")
     print(name)
-    if (name == "mim") :
+    #
+    if (name == "cmim") :
+        model = inst.dbGetStringProp("model", True)
+        if(not model) :
+            inst.dbAddProp("model", "cap_cmim")
+        type = inst.dbGetStringProp("type", True)
+        if(not type) :
+            inst.dbAddProp("type", "cap")
         select = inst.dbGetListProp("calculate", True)
         if (not select) :
             inst.dbAddProp("calculate", "L", "[L, C]")
@@ -97,6 +116,7 @@ def callback(pyDBObject) :
             print("The derived capacitance value is: c=", end="")
             print(1e-15 * c)
             print()
+    #
     if (name == "rsil") :
         select = inst.dbGetListProp("calculate", True)
         if (not select) :
@@ -148,6 +168,7 @@ def callback(pyDBObject) :
             print("The derived resistance value is: r=", end="")
             print(r)
             print()
+    #
     if (name == "rppd") :
         select = inst.dbGetListProp("calculate", True)
         if (not select) :
@@ -199,6 +220,7 @@ def callback(pyDBObject) :
             print("The derived resistance value is: r=", end="")
             print(r)
             print()
+    #
     if (name == "rhigh") :
         select = inst.dbGetListProp("calculate", True)
         if (not select) :
@@ -250,29 +272,30 @@ def callback(pyDBObject) :
             print("The derived resistance value is: r=", end="")
             print(r)
             print()
+    #
     if (name == "via") :
         select = inst.dbGetListProp("selection_type", True)
         if (select == "x&y") :
-            x = inst.dbGetIntProp("x", True)
-            y = inst.dbGetIntProp("y", True)
+            x = inst.dbGetIntProp("Columns", True)
+            y = inst.dbGetIntProp("Rows", True)
             if (x < 1) :
                 x = 1
-                inst.dbReplaceProp("x", x)
+                inst.dbReplaceProp("Columns", x)
                 print("You can't have VIAs without VIAs")
                 print("_    ////   _")
                 print(" \_( O_o')_/")
             if (y < 1) :
                 y = 1
-                inst.dbReplaceProp("y", y)
+                inst.dbReplaceProp("Rows", y)
                 print("You can't have VIAs without VIAs")
                 print("_    ////   _")
                 print(" \_( O_o')_/")
-            via = inst.dbGetListProp("via", True)
-            if (via == "am1") :
+            bottom = inst.dbGetListProp("Bottom", True)
+            if (bottom == "Activ") :
                 enclose = int(0.07 * dbu)
                 size = int(0.16 * dbu)
                 space = int(0.18 * dbu)
-                if ((x > 4) and (y > 4)) :
+                if ((x > 4) or (y > 4)) :
                     space = int(0.2 * dbu)
                 l = int(x * (size + space) - space + 2 * enclose)
                 w = int(y * (size + space) - space + 2 * enclose)
@@ -286,11 +309,11 @@ def callback(pyDBObject) :
                 print(1e-6 * l / dbu, end=", w=")
                 print(1e-6 * w / dbu)
                 print()
-            if (via == "pm1") :
+            if (bottom == "GatPoly") :
                 enclose = int(0.07 * dbu)
                 size = int(0.16 * dbu)
                 space = int(0.18 * dbu)
-                if ((x > 4) and (y > 4)) :
+                if ((x > 4) or (y > 4)) :
                     space = int(0.2 * dbu)
                 l = int(x * (size + space) - space + 2 * enclose)
                 w = int(y * (size + space) - space + 2 * enclose)
@@ -304,11 +327,11 @@ def callback(pyDBObject) :
                 print(1e-6 * l / dbu, end=", w=")
                 print(1e-6 * w / dbu)
                 print()
-            if ((via == "m1m2") or (via == "m2m3") or (via == "m3m4") or (via == "m4m5")) :
+            if ((bottom == "Metal1") or (bottom == "Metal2") or (bottom == "Metal3") or (bottom == "Metal4")) :
                 enclose = int(0.05 * dbu)
                 size = int(0.19 * dbu)
                 space = int(0.22 * dbu)
-                if ((x > 3) and (y > 3)) :
+                if ((x > 3) or (y > 3)) :
                     space = int(0.29 * dbu)
                 l = int(x * (size + space) - space + 2 * enclose)
                 w = int(y * (size + space) - space + 2 * enclose)
@@ -322,7 +345,7 @@ def callback(pyDBObject) :
                 print(1e-6 * l / dbu, end=", w=")
                 print(1e-6 * w / dbu)
                 print()
-            if (via == "m5tm1") :
+            if (bottom == "Metal5") :
                 enclose = int(0.42 * dbu)
                 size = int(0.42 * dbu)
                 space = int(0.42 * dbu)
@@ -338,7 +361,7 @@ def callback(pyDBObject) :
                 print(1e-6 * l / dbu, end=", w=")
                 print(1e-6 * w / dbu)
                 print()
-            if (via == "tm1tm2") :
+            if (bottom == "TopMetal1") :
                 enclose = int(0.5 * dbu)
                 size = int(0.9 * dbu)
                 space = int(1.06 * dbu)
@@ -367,8 +390,8 @@ def callback(pyDBObject) :
                 print("The length value is of grid, adjusting. The new length value is: l=", end="")
                 print(1e-6 * l / dbu)
             inst.dbReplaceProp("l", 1e-6 * l / dbu)
-            via = inst.dbGetListProp("via", True)
-            if (via == "am1") :
+            bottom = inst.dbGetListProp("Bottom", True)
+            if (bottom == "Activ") :
                 enclose = int(0.07 * dbu)
                 size = int(0.16 * dbu)
                 space = int(0.18 * dbu)
@@ -384,17 +407,17 @@ def callback(pyDBObject) :
                     print(1e-6 * l / dbu)
                 x = int((l - 2 * enclose + space) / (size + space))
                 y = int((w - 2 * enclose + space) / (size + space))
-                if ((x > 4) and (y > 4)) :
+                if ((x > 4) or (y > 4)) :
                     space = int(0.2 * dbu)
                     x = int((l - 2 * enclose + space) / (size + space))
                     y = int((w - 2 * enclose + space) / (size + space))
-                inst.dbReplaceProp("x", x)
-                inst.dbReplaceProp("y", y)
-                print("The derived parameters are: x=", end="")
-                print(x, end=", y=")
+                inst.dbReplaceProp("Columns", x)
+                inst.dbReplaceProp("Rows", y)
+                print("The derived parameters are: Columns=", end="")
+                print(x, end=", Rows=")
                 print(y)
                 print()
-            if (via == "pm1") :
+            if (bottom == "GatPoly") :
                 enclose = int(0.07 * dbu)
                 size = int(0.16 * dbu)
                 space = int(0.18 * dbu)
@@ -410,17 +433,17 @@ def callback(pyDBObject) :
                     print(1e-6 * l / dbu)
                 x = int((l - 2 * enclose + space) / (size + space))
                 y = int((w - 2 * enclose + space) / (size + space))
-                if ((x > 4) and (y > 4)) :
+                if ((x > 4) or (y > 4)) :
                     space = int(0.2 * dbu)
                     x = int((l - 2 * enclose + space) / (size + space))
                     y = int((w - 2 * enclose + space) / (size + space))
-                inst.dbReplaceProp("x", x)
-                inst.dbReplaceProp("y", y)
-                print("The derived parameters are: x=", end="")
-                print(x, end=", y=")
+                inst.dbReplaceProp("Columns", x)
+                inst.dbReplaceProp("Rows", y)
+                print("The derived parameters are: Columns=", end="")
+                print(x, end=", Rows=")
                 print(y)
                 print()
-            if ((via == "m1m2") or (via == "m2m3") or (via == "m3m4") or (via == "m4m5")) :
+            if ((bottom == "Metal1") or (bottom == "Metal2") or (bottom == "Metal3") or (bottom == "Metal4")) :
                 enclose = int(0.05 * dbu)
                 size = int(0.19 * dbu)
                 space = int(0.22 * dbu)
@@ -436,17 +459,17 @@ def callback(pyDBObject) :
                     print(1e-6 * l / dbu)
                 x = int((l - 2 * enclose + space) / (size + space))
                 y = int((w - 2 * enclose + space) / (size + space))
-                if ((x > 3) and (y > 3)) :
+                if ((x > 3) or (y > 3)) :
                     space = int(0.29 * dbu)
                     x = int((l - 2 * enclose + space) / (size + space))
                     y = int((w - 2 * enclose + space) / (size + space))
-                inst.dbReplaceProp("x", x)
-                inst.dbReplaceProp("y", y)
-                print("The derived parameters are: x=", end="")
-                print(x, end=", y=")
+                inst.dbReplaceProp("Columns", x)
+                inst.dbReplaceProp("Rows", y)
+                print("The derived parameters are: Columns=", end="")
+                print(x, end=", Rows=")
                 print(y)
                 print()
-            if (via == "m5tm1") :
+            if (bottom == "Metal5") :
                 enclose = int(0.42 * dbu)
                 size = int(0.42 * dbu)
                 space = int(0.42 * dbu)
@@ -462,13 +485,13 @@ def callback(pyDBObject) :
                     print(1e-6 * l / dbu)
                 x = int((l - 2 * enclose + space) / (size + space))
                 y = int((w - 2 * enclose + space) / (size + space))
-                inst.dbReplaceProp("x", x)
-                inst.dbReplaceProp("y", y)
-                print("The derived parameters are: x=", end="")
-                print(x, end=", y=")
+                inst.dbReplaceProp("Columns", x)
+                inst.dbReplaceProp("Rows", y)
+                print("The derived parameters are: Columns=", end="")
+                print(x, end=", Rows=")
                 print(y)
                 print()
-            if (via == "tm1tm2") :
+            if (bottom == "TopMetal1") :
                 enclose = int(0.5 * dbu)
                 size = int(0.9 * dbu)
                 space = int(1.06 * dbu)
@@ -484,12 +507,13 @@ def callback(pyDBObject) :
                     print(1e-6 * l / dbu)
                 x = int((l - 2 * enclose + space) / (size + space))
                 y = int((w - 2 * enclose + space) / (size + space))
-                inst.dbReplaceProp("x", x)
-                inst.dbReplaceProp("y", y)
-                print("The derived parameters are: x=", end="")
-                print(x, end=", y=")
+                inst.dbReplaceProp("Columns", x)
+                inst.dbReplaceProp("Rows", y)
+                print("The derived parameters are: Columns=", end="")
+                print(x, end=", Rows=")
                 print(y)
                 print()
+    #
     if (name == "mos") :
         select = inst.dbGetListProp("calculate", True)
         if (not select) :
@@ -572,6 +596,7 @@ def callback(pyDBObject) :
             inst.dbReplaceProp("w", 1e-6 * w / dbu)
             print("The total width value is: w=", end="")
             print(1e-6 * w / dbu)
+    #
     if (name == "isolbox") :
         w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(3.17 * dbu)) :
@@ -593,6 +618,7 @@ def callback(pyDBObject) :
             print("The length value is of grid, adjusting. The new length value is: l=", end="")
             print(1e-6 * l / dbu)
         inst.dbReplaceProp("l", 1e-6 * l / dbu)
+    #
     if (name == "pad") :
         w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(2.1 * dbu)) :
@@ -608,6 +634,7 @@ def callback(pyDBObject) :
             print("The width value is of grid, adjusting. The new width value is: w=", end="")
             print(1e-6 * w / dbu)
         inst.dbReplaceProp("w", 1e-6 * w / dbu)
+    #
     if (name == "sealring") :
         w = max(int(inst.dbGetFloatProp("w", True) * 1e6 * dbu), int(inst.dbGetFloatProp("w", True) * 1e9))
         if (w < int(50 * dbu)) :
@@ -639,3 +666,130 @@ def callback(pyDBObject) :
             print("The distance value is of grid, adjusting. The new distance value is: d=", end="")
             print(1e-6 * d / dbu)
         inst.dbReplaceProp("d", 1e-6 * d / dbu)
+    #
+    if (name == "npn13G2") :
+        ne = int(inst.dbGetIntProp("NE", True))
+        if (ne < 1):
+            ne = 1
+            inst.dbReplaceProp("NE", ne)
+            print("Do you actually want a transistor? Have one anyway: NE=1")
+            print("_    ////   _")
+            print(" \_( O_o')_/")
+        if (ne > 10):
+            ne = 10
+            inst.dbReplaceProp("NE", ne)
+            print("Max number of emitters is 10: NE=10")
+    #
+    if (name == "SVaricap") :
+        model = inst.dbGetStringProp("model", True)
+        if(not model) :
+            inst.dbAddProp("model", "sg13_hv_svaricap")
+        type = inst.dbGetStringProp("type", True)
+        if(not type) :
+            inst.dbAddProp("type", "cap")
+        nx = int(inst.dbGetIntProp("Nx", True))
+        if (nx < 1):
+            nx = 1
+            inst.dbReplaceProp("Nx", nx)
+            print("Do you actually want a varactor? Have one anyway: Nx=1")
+            print("_    ////   _")
+            print(" \_( O_o')_/")
+        if (nx > 10):
+            nx = 10
+            inst.dbReplaceProp("Nx", nx)
+            print("Max number of \"fingers\" is 10: Nx=10")
+        width = inst.dbGetListProp("Width", True)
+        if (not width) :
+            inst.dbAddProp("Width", "3.74u", "[3.74u , 9.74u]")
+            width = inst.dbGetListProp("Width", True)  
+        length = inst.dbGetListProp("Length", True)
+        if (not length) :
+            inst.dbAddProp("Length", "0.3u", "[0.3u, 0.8u]")  
+            length = inst.dbGetListProp("Length", True)  
+        w = inst.dbGetFloatProp("w", True)
+        l = inst.dbGetFloatProp("l", True)
+        if (width == "3.74u"):
+            w = 3.74e-6
+            inst.dbReplaceProp("w", w)
+        else :
+            w = 9.74e-6
+            inst.dbReplaceProp("w", w)
+        if (length == "0.3u"):
+            l = 0.3e-6
+            inst.dbReplaceProp("l", l)
+        else :
+            l = 0.8e-6
+            inst.dbReplaceProp("l", l)
+    #
+    if (name == "nmoscl_2") :
+        model = inst.dbGetStringProp("model", True)
+        if(not model) :
+            inst.dbAddProp("model", "nmoscl_2")
+        type = inst.dbGetStringProp("type", True)
+        if(not type) :
+            inst.dbAddProp("type", "dio")
+   #
+    if (name == "nmoscl_4") :
+        model = inst.dbGetStringProp("model", True)
+        if(not model) :
+            inst.dbAddProp("model", "nmoscl_4")
+        type = inst.dbGetStringProp("type", True)
+        if(not type) :
+            inst.dbAddProp("type", "dio")
+    #
+    if (name == "dantenna") :
+        model = inst.dbGetStringProp("model", True)
+        if(not model) :
+            inst.dbAddProp("model", "dantenna")
+        type = inst.dbGetStringProp("type", True)
+        if(not type) :
+            inst.dbAddProp("type", "dio")
+        w = max(int(inst.dbGetFloatProp("Width", True) * 1e6 * dbu), int(inst.dbGetFloatProp("Width", True) * 1e9))
+        if (w < int(0.78 * dbu)) :
+            w = int(0.78 * dbu)
+            print("The width value is smaller then minimal, adjusting. The new width value is: w=", end="")
+            print(1e-6 * w / dbu)
+        if (w%xygrid) :
+            w = int(xygrid * int(w / xygrid))
+            print("The width value is of grid, adjusting. The new width value is: w=", end="")
+            print(1e-6 * w / dbu)   
+        inst.dbReplaceProp("Width", 1e-6 * (w / dbu))
+        l = max(int(inst.dbGetFloatProp("Length", True) * 1e6 * dbu), int(inst.dbGetFloatProp("Length", True) * 1e9))
+        if (l < int(0.78 * dbu)) :
+            l = int(0.78 * dbu)
+            print("The length value is smaller then minimal, adjusting. The new width value is: l=", end="")
+            print(1e-6 * l / dbu)
+        if (l%xygrid) :
+            l = int(xygrid * int(l / xygrid))
+            print("The length value is of grid, adjusting. The new width value is: l=", end="")
+            print(1e-6 * l / dbu)   
+        inst.dbReplaceProp("Length", 1e-6 * (l / dbu))
+    #
+    if (name == "dpantenna") :
+        model = inst.dbGetStringProp("model", True)
+        if(not model) :
+            inst.dbAddProp("model", "dpantenna")
+        type = inst.dbGetStringProp("type", True)
+        if(not type) :
+            inst.dbAddProp("type", "dio")
+        w = max(int(inst.dbGetFloatProp("Width", True) * 1e6 * dbu), int(inst.dbGetFloatProp("Width", True) * 1e9))
+        if (w < int(0.78 * dbu)) :
+            w = int(0.78 * dbu)
+            print("The width value is smaller then minimal, adjusting. The new width value is: w=", end="")
+            print(1e-6 * w / dbu)
+        if (w%xygrid) :
+            w = int(xygrid * int(w / xygrid))
+            print("The width value is of grid, adjusting. The new width value is: w=", end="")
+            print(1e-6 * w / dbu)   
+        inst.dbReplaceProp("Width", 1e-6 * (w / dbu))
+        l = max(int(inst.dbGetFloatProp("Length", True) * 1e6 * dbu), int(inst.dbGetFloatProp("Length", True) * 1e9))
+        if (l < int(0.78 * dbu)) :
+            l = int(0.78 * dbu)
+            print("The length value is smaller then minimal, adjusting. The new width value is: l=", end="")
+            print(1e-6 * l / dbu)
+        if (l%xygrid) :
+            l = int(xygrid * int(l / xygrid))
+            print("The length value is of grid, adjusting. The new width value is: l=", end="")
+            print(1e-6 * w / dbu)   
+        inst.dbReplaceProp("Length", 1e-6 * (l / dbu))
+    #

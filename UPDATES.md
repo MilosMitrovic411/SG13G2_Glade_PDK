@@ -31,4 +31,7 @@ Version 1.3.1
 Version 1.4.1
 
  	Added ESD protection components and SVaricap and updated via PCell to enable multi-stack vias.
+  
+Version 1.5.1
 
+ 	NPN transistors added.

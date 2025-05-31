@@ -1,9 +1,6 @@
-#---------------------------------------------------------------
-# CNM25 PiP Capacitor PCell for extraction
-#---------------------------------------------------------------
-
+#
 from ui import *
-
+#
 def cmim_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	lib = cv.lib()
 	dbu = float(lib.dbuPerUU())
@@ -39,8 +36,8 @@ def cmim_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	w = float(area/l)
 
 	# Update the master pcell property.
-	cv.dbAddProp("w", w*1e-6)
-	cv.dbAddProp("l", l*1e-6)
+	cv.dbAddProp("width", w*1e-6)
+	cv.dbAddProp("length", l*1e-6)
 
 	# Create the recognition region shape
 	xpts = intarray(npts)
@@ -51,10 +48,10 @@ def cmim_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	cv.dbCreatePolygon(xpts, ypts, npts, TECH_Y0_LAYER);
 
 	# Create pins
-	top_net = cv.dbCreateNet("T")
-	cv.dbCreatePin("T", top_net, DB_PIN_INPUT)
-	bot_net = cv.dbCreateNet("B")
-	cv.dbCreatePin("B", bot_net, DB_PIN_INPUT)
+	top_net = cv.dbCreateNet("PLUS")
+	cv.dbCreatePin("PLUS", top_net, DB_PIN_INPUT)
+	bot_net = cv.dbCreateNet("MINUS")
+	cv.dbCreatePin("MINUS", bot_net, DB_PIN_INPUT)
 
 	# Setting device type to capacitor
 	cv.dbAddProp("type", "cap")
@@ -63,8 +60,8 @@ def cmim_ex(cv, ptlist=[[0,0],[1000,0],[1000,1000],[0,1000]]) :
 	cv.dbAddProp("modelName", "cap_cmim")
 
 	# Set the NLP property for netlisting
-	cv.dbAddProp("NLPDeviceFormat", "[@instName] [|T:%] [|B:%] [@modelName] [@w:w=%u] [@l:l=%u] [@m:m=%:m=1]")
-	cv.dbAddProp("NLPDeviceFormatCDL", "x[@instName] [|T:%] [|B:%] [@modelName] [@w:w=%u] [@l:l=%u] [@m:m=%:m=1]")
+	cv.dbAddProp("NLPDeviceFormat", "[@instName] [|PLUS:%] [|MINUS:%] [@modelName] [@width:w=%e-6] [@length:l=%e-6]")
+	cv.dbAddProp("NLPDeviceFormatCDL", "x[@instName] [|PLUS:%] [|MINUS:%] [@modelName] [@width:w=%e-6] [@length:l=%e-6]")
 
 	# Update the bounding box
 	cv.update()

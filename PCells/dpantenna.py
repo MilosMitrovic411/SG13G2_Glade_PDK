@@ -5,12 +5,12 @@ from ui import *
 #
 # The entry point
 #
-def dpantenna(cv, Width=0.78e-6, Length=0.78e-6, type="dio", model="dpantenna" ) :
+def dpantenna(cv, width=0.78e-6, length=0.78e-6, type="dio", modelName="dpantenna" ) :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    w = max(int(Width * 1e6 * dbu), int(Width * 1e9))
-    l = max(int(Length * 1e6 * dbu), int(Length * 1e9))
+    w = max(int(width * 1e6 * dbu), int(width * 1e9))
+    l = max(int(length * 1e6 * dbu), int(length * 1e9))
     #
     # Layer rules
     #
@@ -28,19 +28,19 @@ def dpantenna(cv, Width=0.78e-6, Length=0.78e-6, type="dio", model="dpantenna" )
     #
     if (w < int(0.78 * dbu)) :
         w = int(0.78 * dbu)
-        cv.dbReplaceProp("Width", 1e-6 * (w / dbu))
+        cv.dbReplaceProp("width", 1e-6 * (w / dbu))
         cv.update()
     if (l < int(0.78 * dbu)) :
         l = int(0.78 * dbu)
-        cv.dbReplaceProp("Length", 1e-6 * (l / dbu))
+        cv.dbReplaceProp("length", 1e-6 * (l / dbu))
         cv.update()
     if (w%xygrid!=0) :
         w = int(xygrid * int(w / xygrid))
-        cv.dbReplaceProp("Width", 1e-6 * (w / dbu))
+        cv.dbReplaceProp("width", 1e-6 * (w / dbu))
         cv.update()
     if (l%xygrid!=0) :
         l = int(xygrid * int(l / xygrid))
-        cv.dbReplaceProp("Length", 1e-6 * (l / dbu))
+        cv.dbReplaceProp("length", 1e-6 * (l / dbu))
         cv.update()
     #
     # Creating the device

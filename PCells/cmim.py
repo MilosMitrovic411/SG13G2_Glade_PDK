@@ -5,21 +5,21 @@ from ui import *
 #
 # The entry point
 #
-def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["none", "width", "length", "full"]) :
+def cmim(cv, capacitance=1.95e-15, width=1.14e-6, length=1.14e-6, calculate=["L", "C"], contacts=["none", "width", "length", "full"], type="cap", modelName="cap_cmim") :
     lib = cv.lib()
     tech = lib.tech()
     dbu = lib.dbuPerUU()
-    width = max(int(w * 1e6 * dbu), int(w * 1e9))
-    cap = max(int(c * 1e15 * dbu), int(c * 1e18))
+    width = max(int(width * 1e6 * dbu), int(width * 1e9))
+    cap = max(int(capacitance * 1e15 * dbu), int(capacitance * 1e18))
     length = int(cap / (width * 1.5 / dbu))
     if (calculate == "L") : 
         length = int(cap / (width * 1.5 / dbu))
-        cv.dbReplaceProp("l", 1e-6 * length / dbu)
+        cv.dbReplaceProp("length", 1e-6 * length / dbu)
         cv.update()
     if (calculate == "C") :
         length = max(int(l * 1e6 * dbu), int(l * 1e9))
         cap = float(width * length * 1.5 / (dbu * dbu))
-        cv.dbReplaceProp("c", 1e-15 * cap)
+        cv.dbReplaceProp("capacitance", 1e-15 * cap)
         cv.update()
     area = int(width * length)
     #
@@ -45,25 +45,25 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
     #
     if width%xygrid!=0 :
         width = int(xygrid * int(width / xygrid))
-        cv.dbReplaceProp("w", 1e-6 * (width / dbu))
+        cv.dbReplaceProp("width", 1e-6 * (width / dbu))
         cv.update()
     if length%xygrid!=0 :
         length = int(xygrid * int(length / xygrid))
-        cv.dbReplaceProp("l", 1e-6 * (length / dbu))
+        cv.dbReplaceProp("length", 1e-6 * (length / dbu))
         cv.update()
     if width < min_width :
         width = min_width
-        cv.dbReplaceProp("w", 1e-6 * (width / dbu))
+        cv.dbReplaceProp("width", 1e-6 * (width / dbu))
         cv.update()
     if length < min_length :
         length = min_length
-        cv.dbReplaceProp("l", 1e-6 * (length / dbu))
+        cv.dbReplaceProp("length", 1e-6 * (length / dbu))
         cv.update()
     if area > max_mim_area :
         length = int(max_mim_area / width)
         if length%xygrid!=0 :
             length = int(xygrid * int(length / xygrid))
-        cv.dbReplaceProp("l", 1e-6 * (length / dbu))
+        cv.dbReplaceProp("length", 1e-6 * (length / dbu))
         cv.update()
     #
     # Creating the device
@@ -72,16 +72,16 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
     layer = tech.getLayerNum("Metal5", "drawing")
     r = Rect(int(-metal5_en_mim), int(-metal5_en_mim), int(length + metal5_en_mim), int(width + metal5_en_mim))
     metal5 = cv.dbCreateRect(r, layer)
-    net = cv.dbCreateNet("A")
-    pin = cv.dbCreatePin("A", net, DB_PIN_INOUT)
+    net = cv.dbCreateNet("MINUS")
+    pin = cv.dbCreatePin("MINUS", net, DB_PIN_INOUT)
     cv.dbCreatePort(pin, metal5)
     # Create MIM plate
     layer = tech.getLayerNum("MIM", "drawing")
     r = Rect(0, 0, int(length), int(width))
     mim = cv.dbCreateRect(r, layer)
     if (contacts == "none") :
-        net = cv.dbCreateNet("B")
-        pin = cv.dbCreatePin("B", net, DB_PIN_INOUT)
+        net = cv.dbCreateNet("PLUS")
+        pin = cv.dbCreatePin("PLUS", net, DB_PIN_INOUT)
         cv.dbCreatePort(pin, mim)
     # Create contacts and metalization over them
     if (contacts == "width") :
@@ -109,8 +109,8 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
         ym1 = int(mim_en_topvia1 + topvia1_width + offset + n * (topvia1_width + s_cont) + top_en_via)
         r = Rect(xm0, ym0, xm1, ym1)
         topmetal1 = cv.dbCreateRect(r, layer)
-        net = cv.dbCreateNet("B")
-        pin = cv.dbCreatePin("B", net, DB_PIN_INOUT)
+        net = cv.dbCreateNet("PLUS")
+        pin = cv.dbCreatePin("PLUS", net, DB_PIN_INOUT)
         cv.dbCreatePort(pin, topmetal1)
     if (contacts == "length") :
         layer = tech.getLayerNum("TopVia1", "drawing")
@@ -137,8 +137,8 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
         ym1 = int(mim_en_topvia1 + topvia1_width + top_en_via)
         r = Rect(xm0, ym0, xm1, ym1)
         topmetal1 = cv.dbCreateRect(r, layer)
-        net = cv.dbCreateNet("B")
-        pin = cv.dbCreatePin("B", net, DB_PIN_INOUT)
+        net = cv.dbCreateNet("PLUS")
+        pin = cv.dbCreatePin("PLUS", net, DB_PIN_INOUT)
         cv.dbCreatePort(pin, topmetal1)
     if (contacts == "full") :
         layer = tech.getLayerNum("TopVia1", "drawing")
@@ -170,13 +170,9 @@ def cmim(cv, c=1.95e-15, w=1.14e-6, l=1.14e-6, calculate=["L", "C"], contacts=["
         ym1 = int(mim_en_topvia1 + topvia1_width + w_offset + n * (topvia1_width + s_cont) + top_en_via)
         r = Rect(xm0, ym0, xm1, ym1)
         topmetal1 = cv.dbCreateRect(r, layer)
-        net = cv.dbCreateNet("B")
-        pin = cv.dbCreatePin("B", net, DB_PIN_INOUT)
+        net = cv.dbCreateNet("PLUS")
+        pin = cv.dbCreatePin("PLUS", net, DB_PIN_INOUT)
         cv.dbCreatePort(pin, topmetal1)
-    #
-    # Add device type
-    #
-    cv.dbAddProp("type", "cap")
     #
     # Save results
     #
